@@ -1,51 +1,29 @@
-import React, { useState, useEffect } from 'react';
-
+import { useState, useEffect } from 'react';
 import Helmet from '../components/Helmet/Helmet.js';
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
-
-import heroImg from '../assets/images/hero.png';
-import './Hero.module.css';
-
 import Link from 'next/link';
-
 import Category from '../components/UI/category/Category.jsx';
-
 import styles from './Home.module.css';
-
-import featureImg01 from '../assets/images/service-01.png';
-import featureImg02 from '../assets/images/service-02.png';
-import featureImg03 from '../assets/images/service-03.png';
-
-import foodCategoryImg01 from '../assets/images/hamburger.png';
-import foodCategoryImg02 from '../assets/images/pizza.png';
-import foodCategoryImg03 from '../assets/images/bread.png';
-
 import ProductCard from '../components/UI/product-card/ProductCard.jsx';
-
-import whyImg from '../assets/images/location.png';
-
-import networkImg from '../assets/images/network.png';
-
 import TestimonialSlider from '../components/UI/slider/TestimonialSlider.jsx';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getProduct } from '../store/shopping-cart/productSlice.js';
 
 const featureData = [
   {
     title: 'Quick Delivery',
-    imgUrl: featureImg01,
+    imgUrl: '/assets/images/service-01.png',
     desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, doloremque.',
   },
 
   {
     title: 'Super Dine In',
-    imgUrl: featureImg02,
+    imgUrl: '/assets/images/service-02.png',
     desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, doloremque.',
   },
   {
     title: 'Easy Pick Up',
-    imgUrl: featureImg03,
+    imgUrl: '/assets/images/service-03.png',
     desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, doloremque.',
   },
 ];
@@ -138,7 +116,7 @@ const Home = () => {
 
             <Col lg="6" md="6">
               <div className="hero__img">
-                <img src={heroImg} alt="hero-img" className="w-100" />
+                <img src='/assets/images/hero.png' alt="hero-img" className="w-100" />
               </div>
             </Col>
           </Row>
@@ -200,7 +178,7 @@ const Home = () => {
                   } `}
                   onClick={() => setCategory('BURGER')}
                 >
-                  <img src={foodCategoryImg01} alt="" />
+                  <img src='/assets/images/hamburger.png' alt="" />
                   Burger
                 </button>
 
@@ -210,7 +188,7 @@ const Home = () => {
                   } `}
                   onClick={() => setCategory('PIZZA')}
                 >
-                  <img src={foodCategoryImg02} alt="" />
+                  <img src='/assets/images/pizza.png' alt="" />
                   Pizza
                 </button>
 
@@ -220,7 +198,7 @@ const Home = () => {
                   } `}
                   onClick={() => setCategory('BREAD')}
                 >
-                  <img src={foodCategoryImg03} alt="" />
+                  <img src='/assets/images/bread.png' alt="" />
                   Bread
                 </button>
               </div>
@@ -239,7 +217,7 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="6" md="6">
-              <img src={whyImg} alt="why-tasty-treat" className="w-100" />
+              <img src='/assets/images/location.png' alt="why-tasty-treat" className="w-100" />
             </Col>
 
             <Col lg="6" md="6">
@@ -322,7 +300,7 @@ const Home = () => {
             </Col>
 
             <Col lg="6" md="6">
-              <img src={networkImg} alt="testimonial-img" className="w-100" />
+              <img src='/assets/images/network.png' alt="testimonial-img" className="w-100" />
             </Col>
           </Row>
         </Container>
