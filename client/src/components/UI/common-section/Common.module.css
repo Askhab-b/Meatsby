@@ -1,6 +1,6 @@
 .common__section {
   background: linear-gradient(#212245b2, #212245b2),
-    url("./assets/images/banner-02.jpg");
+    url("/assets/images/banner-02.jpg");
 
   background-repeat: no-repeat;
   background-size: cover;
