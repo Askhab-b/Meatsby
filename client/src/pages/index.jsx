@@ -69,12 +69,13 @@ const Home = () => {
   }, [category]);
 
   return (
-    <Helmet title="Home">
+    <>
+    <Helmet title="Главная" />
       <section>
         <Container>
           <Row>
             <Col lg="6" md="6">
-              <div className="hero__content ">
+              <div className={styles.hero__content}>
                 <h5 className="mb-3">Easy way to make an order</h5>
                 <h1 className={`mb-4 ${styles.hero__title}`}>
                   <span>HUNGRY?</span> Just wait <br /> food at
@@ -86,26 +87,26 @@ const Home = () => {
                   tenetur autem, sint veritatis!
                 </p>
 
-                <div className={`hero__btns d-flex align-items-center gap-5 mt-4`}>
-                  <button className="order__btn d-flex align-items-center justify-content-between">
+                <div className={`${styles.hero__btns} d-flex align-items-center gap-5 mt-4`}>
+                  <button className={`${styles.order__btn} d-flex align-items-center justify-content-between`}>
                     Order now <i className="ri-arrow-right-s-line"></i>
                   </button>
 
-                  <button className="all__foods-btn">
+                  <button className={styles.all__foods_btn}>
                     <Link href="/foods">See all foods</Link>
                   </button>
                 </div>
 
-                <div className=" hero__service  d-flex align-items-center gap-5 mt-5 ">
+                <div className={`${styles.hero__service} d-flex align-items-center gap-5 mt-5 `}>
                   <p className=" d-flex align-items-center gap-2 ">
-                    <span className="shipping__icon">
+                    <span className={styles.shipping__icon}>
                       <i className="ri-car-line"></i>
                     </span>{' '}
                     No shipping charge
                   </p>
 
                   <p className=" d-flex align-items-center gap-2 ">
-                    <span className="shipping__icon">
+                    <span className={styles.shipping__icon}>
                       <i className="ri-shield-check-line"></i>
                     </span>{' '}
                     100% secure checkout
@@ -115,7 +116,7 @@ const Home = () => {
             </Col>
 
             <Col lg="6" md="6">
-              <div className="hero__img">
+              <div className={styles.hero__img}>
                 <img src='/assets/images/hero.png' alt="hero-img" className="w-100" />
               </div>
             </Col>
@@ -131,22 +132,22 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="text-center">
-              <h5 className="feature__subtitle mb-4">What we serve</h5>
-              <h2 className="feature__title">Just sit back at home</h2>
-              <h2 className="feature__title">
+              <h5 className={`${styles.feature__subtitle} mb-4`}>What we serve</h5>
+              <h2 className={styles.feature__title}>Just sit back at home</h2>
+              <h2 className={styles.feature__title}>
                 we will <span>take care</span>
               </h2>
-              <p className="mb-1 mt-4 feature__text">
+                <p className={`mb-1 mt-4 ${styles.feature__text}`}>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, officiis?
               </p>
-              <p className="feature__text">
+              <p className={styles.feature__text}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, eius.{' '}
               </p>
             </Col>
 
             {featureData.map((item, index) => (
               <Col lg="4" md="6" sm="6" key={index} className="mt-5">
-                <div className="feature__item text-center px-5 py-3">
+                <div className={`${styles.feature__item} text-center px-5 py-3`}>
                   <img src={item.imgUrl} alt="feature-img" className="w-25 mb-3" />
                   <h5 className=" fw-bold mb-3">{item.title}</h5>
                   <p>{item.desc}</p>
@@ -165,16 +166,16 @@ const Home = () => {
             </Col>
 
             <Col lg="12">
-              <div className="food__category d-flex align-items-center justify-content-center gap-4">
+              <div className={`${styles.food__category} d-flex align-items-center justify-content-center gap-4`}>
                 <button
-                  className={`all__btn  ${category === 'ALL' ? 'foodBtnActive' : ''} `}
+                  className={`${styles.all__btn} ${category === 'ALL' ? styles.foodBtnActive : ''} `}
                   onClick={() => setCategory('ALL')}
                 >
                   All
                 </button>
                 <button
                   className={`d-flex align-items-center gap-2 ${
-                    category === 'BURGER' ? 'foodBtnActive' : ''
+                    category === 'BURGER' ? styles.foodBtnActive : ''
                   } `}
                   onClick={() => setCategory('BURGER')}
                 >
@@ -184,7 +185,7 @@ const Home = () => {
 
                 <button
                   className={`d-flex align-items-center gap-2 ${
-                    category === 'PIZZA' ? 'foodBtnActive' : ''
+                    category === 'PIZZA' ? styles.foodBtnActive : ''
                   } `}
                   onClick={() => setCategory('PIZZA')}
                 >
@@ -194,7 +195,7 @@ const Home = () => {
 
                 <button
                   className={`d-flex align-items-center gap-2 ${
-                    category === 'BREAD' ? 'foodBtnActive' : ''
+                    category === 'BREAD' ? styles.foodBtnActive : ''
                   } `}
                   onClick={() => setCategory('BREAD')}
                 >
@@ -213,7 +214,7 @@ const Home = () => {
         </Container>
       </section>
 
-      <section className="why__choose-us">
+      <section className={styles.why__choose_us}>
         <Container>
           <Row>
             <Col lg="6" md="6">
@@ -221,11 +222,11 @@ const Home = () => {
             </Col>
 
             <Col lg="6" md="6">
-              <div className="why__tasty-treat">
-                <h2 className="tasty__treat-title mb-4">
+              <div className={styles.why__tasty_treat}>
+                <h2 className={`${styles.tasty__treat_title} mb-4`}>
                   Why <span>Tasty Treat?</span>
                 </h2>
-                <p className="tasty__treat-desc">
+                <p className={styles.tasty__treat_desc}>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, minus. Tempora
                   reprehenderit a corporis velit, laboriosam vitae ullam, repellat illo sequi odio
                   esse iste fugiat dolor, optio incidunt eligendi deleniti!
@@ -233,28 +234,28 @@ const Home = () => {
 
                 <ListGroup className="mt-4">
                   <ListGroupItem className="border-0 ps-0">
-                    <p className=" choose__us-title d-flex align-items-center gap-2 ">
+                    <p className={`${styles.choose__us_title} d-flex align-items-center gap-2`}>
                       <i className="ri-checkbox-circle-line"></i> Fresh and tasty foods
                     </p>
-                    <p className="choose__us-desc">
+                    <p className={styles.choose__us_desc}>
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, voluptatibus.
                     </p>
                   </ListGroupItem>
 
                   <ListGroupItem className="border-0 ps-0">
-                    <p className="choose__us-title d-flex align-items-center gap-2 ">
+                    <p className={`${styles.choose__us_title} d-flex align-items-center gap-2`}>
                       <i className="ri-checkbox-circle-line"></i> Quality support
                     </p>
-                    <p className="choose__us-desc">
+                    <p className={styles.choose__us_desc}>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, earum.
                     </p>
                   </ListGroupItem>
 
                   <ListGroupItem className="border-0 ps-0">
-                    <p className="choose__us-title d-flex align-items-center gap-2 ">
+                    <p className={`${styles.choose__us_title} d-flex align-items-center gap-2`}>
                       <i className="ri-checkbox-circle-line"></i>Order from any location{' '}
                     </p>
-                    <p className="choose__us-desc">
+                    <p className={styles.choose__us_desc}>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, earum.
                     </p>
                   </ListGroupItem>
@@ -285,12 +286,12 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="6" md="6">
-              <div className="testimonial ">
-                <h5 className="testimonial__subtitle mb-4">Testimonial</h5>
+              <div className={styles.testimonial}>
+                <h5 className={`${styles.testimonial__subtitle} mb-4`}>Testimonial</h5>
                 <h2 className="testimonial__title mb-4">
                   What our <span>customers</span> are saying
                 </h2>
-                <p className="testimonial__desc">
+                <p className={styles.testimonial__desc}>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio quasi qui
                   minus quos sit perspiciatis inventore quis provident placeat fugiat!
                 </p>
@@ -305,7 +306,8 @@ const Home = () => {
           </Row>
         </Container>
       </section>
-    </Helmet>
+
+      </>
   );
 };
 
