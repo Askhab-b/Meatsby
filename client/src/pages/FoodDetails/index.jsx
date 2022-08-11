@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 //import products from '../assets/fake-data/products';
+
 import { useRouter } from 'next/router'
 import Helmet from '../../components/Helmet/Helmet';
 import CommonSection from '../../components/UI/common-section/CommonSection';
@@ -14,6 +15,7 @@ import { cartActions } from '../../store/shopping-cart/cartSlice';
 import ProductCard from '../../components/UI/product-card/ProductCard';
 import { getProduct } from '../../store/shopping-cart/productSlice';
 import { useSelector } from 'react-redux';
+import styles from './Product.module.css';
 
 const FoodDetails = () => {
   const [tab, setTab] = useState('desc');
@@ -31,6 +33,7 @@ const FoodDetails = () => {
   const { id } = router.query;
 
   const dispatch = useDispatch();
+  
 
   const product = prod.filter((product) => Number(product.id) === Number(id));
 
@@ -82,7 +85,7 @@ const FoodDetails = () => {
               <Container>
                 <Row>
                   <Col lg="2" md="2">
-                    <div className="product__images ">
+                    <div className={styles.product__images}>
                       <div className="img__item mb-3" onClick={() => setPreviewImg(item.image01)}>
                         <img
                           src={`http://localhost:4200/${item.image01}`}
@@ -90,7 +93,10 @@ const FoodDetails = () => {
                           className="w-50"
                         />
                       </div>
-                      <div className="img__item mb-3" onClick={() => setPreviewImg(item.image02)}>
+                      <div
+                        className={`${styles.img__item} mb-3`}
+                        onClick={() => setPreviewImg(item.image02)}
+                      >
                         <img
                           src={`http://localhost:4200/${item.image02}`}
                           alt=""
@@ -98,7 +104,7 @@ const FoodDetails = () => {
                         />
                       </div>
 
-                      <div className="img__item" onClick={() => setPreviewImg(item.image03)}>
+                      <div className={styles.img__item} onClick={() => setPreviewImg(item.image03)}>
                         <img
                           src={`http://localhost:4200/${item.image03}`}
                           alt=""
@@ -109,7 +115,7 @@ const FoodDetails = () => {
                   </Col>
 
                   <Col lg="4" md="4">
-                    <div className="product__main-img">
+                    <div className={styles.product__main - img}>
                       <img
                         src={`http://localhost:4200/${previewImg || item.image01}`}
                         alt=""
@@ -119,9 +125,9 @@ const FoodDetails = () => {
                   </Col>
 
                   <Col lg="6" md="6">
-                    <div className="single__product-content">
-                      <h2 className="product__title mb-3">{item.title}</h2>
-                      <p className="product__price">
+                    <div className={styles.single__product - content}>
+                      <h2 className={`${styles.product__title} mb-3`}>{item.title}</h2>
+                      <p className={styles.product__price}>
                         {' '}
                         Price: <span>${item.price}</span>
                       </p>
@@ -131,7 +137,7 @@ const FoodDetails = () => {
 
                       <button
                         onClick={() => addItem(item.id, item.title, item.price, item.image01)}
-                        className="addTOCart__btn"
+                        className={styles.addTOCart__btn}
                       >
                         Add to Cart
                       </button>
@@ -139,7 +145,7 @@ const FoodDetails = () => {
                   </Col>
 
                   <Col lg="12">
-                    <div className="tabs d-flex align-items-center gap-5 py-3">
+                    <div className={`${styles.tabs} d-flex align-items-center gap-5 py-3`}>
                       <h6
                         className={` ${tab === 'desc' ? 'tab__active' : ''}`}
                         onClick={() => setTab('desc')}
@@ -155,30 +161,30 @@ const FoodDetails = () => {
                     </div>
 
                     {tab === 'desc' ? (
-                      <div className="tab__content">
+                      <div className={styles.tab__content}>
                         <p>{item.desc}</p>
                       </div>
                     ) : (
                       <div className="tab__form mb-3">
                         <div className="review pt-5">
-                          <p className="user__name mb-0">John Doe</p>
-                          <p className="user__email">jhon1@gmail.com</p>
-                          <p className="feedback__text">great product</p>
+                          <p className={`${styles.user__name} mb-0`}>John Doe</p>
+                          <p className={styles.user__email}>jhon1@gmail.com</p>
+                          <p className={styles.feedback__text}>great product</p>
                         </div>
 
                         <div className="review">
-                          <p className="user__name mb-0">John Doe</p>
-                          <p className="user__email">jhon1@gmail.com</p>
-                          <p className="feedback__text">great product</p>
+                          <p className={`${styles.user__name} mb-0`}>John Doe</p>
+                          <p className={styles.user__email}>jhon1@gmail.com</p>
+                          <p className={styles.feedback__text}>great product</p>
                         </div>
 
                         <div className="review">
-                          <p className="user__name mb-0">John Doe</p>
-                          <p className="user__email">jhon1@gmail.com</p>
-                          <p className="feedback__text">great product</p>
+                          <p className={`${styles.user__name} mb-0`}>John Doe</p>
+                          <p className={styles.user__email}>jhon1@gmail.com</p>
+                          <p className={styles.feedback__text}>great product</p>
                         </div>
-                        <form className="form" onSubmit={submitHandler}>
-                          <div className="form__group">
+                        <form className={styles.form} onSubmit={submitHandler}>
+                          <div className={styles.form__group}>
                             <input
                               type="text"
                               placeholder="Enter your name"
@@ -187,7 +193,7 @@ const FoodDetails = () => {
                             />
                           </div>
 
-                          <div className="form__group">
+                          <div className={styles.form__group}>
                             <input
                               type="text"
                               placeholder="Enter your email"
@@ -196,7 +202,7 @@ const FoodDetails = () => {
                             />
                           </div>
 
-                          <div className="form__group">
+                          <div className={styles.form__group}>
                             <textarea
                               rows={5}
                               type="text"
@@ -206,7 +212,7 @@ const FoodDetails = () => {
                             />
                           </div>
 
-                          <button type="submit" className="addTOCart__btn">
+                          <button type="submit" className={styles.addTOCart__btn}>
                             Submit
                           </button>
                         </form>
@@ -215,7 +221,7 @@ const FoodDetails = () => {
                   </Col>
 
                   <Col lg="12" className="mb-5 mt-4">
-                    <h2 className="related__Product-title">You might also like</h2>
+                    <h2 className={styles.related__Product - title}>You might also like</h2>
                   </Col>
 
                   {relatedProduct.map((item) => (

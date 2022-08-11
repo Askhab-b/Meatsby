@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import { doLogin } from '../../store/shopping-cart/authSlice';
 import { useSelector } from 'react-redux';
+import styles from './Login.module.css'
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -13,6 +14,7 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
+  
   const submitHandler = (e) => {
     e.preventDefault();
   };
@@ -42,10 +44,10 @@ const Login = () => {
         <Container>
           <Row>
             <Col lg="6" md="6" sm="12" className="m-auto text-center">
-              <form className="form mb-5" onSubmit={submitHandler}>
+              <form className={`${styles.form} mb-5`} onSubmit={submitHandler}>
                 {signingIn && <div>You are authorized</div>}
                 {error && <div>{error.message}</div>}
-                <div className="form__group">
+                <div className={styles.form__group}>
                   <input
                     type="email"
                     placeholder="Email"
@@ -54,7 +56,7 @@ const Login = () => {
                     onChange={handleChangeEmail}
                   />
                 </div>
-                <div className="form__group">
+                <div className={styles.form__group}>
                   <input
                     type="password"
                     placeholder="Password"
@@ -63,7 +65,7 @@ const Login = () => {
                     onChange={handleChangePassword}
                   />
                 </div>
-                <button type="submit" className="addTOCart__btn" onClick={handleClickAuth}>
+                <button type="submit" className={styles.addTOCart__btn} onClick={handleClickAuth}>
                   Login
                 </button>
               </form>
