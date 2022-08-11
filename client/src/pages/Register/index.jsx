@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { createUser } from '../../store/shopping-cart/authSlice';
-
+import styles from './Register.module.css';
 const Register = () => {
   const dispatch = useDispatch();
 
@@ -48,10 +48,10 @@ const Register = () => {
         <Container>
           <Row>
             <Col lg="6" md="6" sm="12" className="m-auto text-center">
-              <form className="form mb-5" onSubmit={submitHandler}>
+              <form className={`${styles.form} mb-5`} onSubmit={submitHandler}>
                 {error}
                 {signingUp && <div>You are registered</div>}
-                <div className="form__group">
+                <div className={styles.form__group}>
                   <input
                     type="text"
                     placeholder="First name"
@@ -60,7 +60,7 @@ const Register = () => {
                     value={firstname}
                   />
                 </div>
-                <div className="form__group">
+                <div className={styles.form__group}>
                   <input
                     type="text"
                     placeholder="Last name"
@@ -69,7 +69,7 @@ const Register = () => {
                     value={lastname}
                   />
                 </div>
-                <div className="form__group">
+                <div className={styles.form__group}>
                   <input
                     type="email"
                     placeholder="Email"
@@ -78,7 +78,7 @@ const Register = () => {
                     value={email}
                   />
                 </div>
-                <div className="form__group">
+                <div className={styles.form__group}>
                   <input
                     type="password"
                     placeholder="Password"
@@ -87,7 +87,11 @@ const Register = () => {
                     value={password}
                   />
                 </div>
-                <button type="submit" className="addTOCart__btn" onClick={handleRegistration}>
+                <button
+                  type="submit"
+                  className={styles.addTOCart__btn}
+                  onClick={handleRegistration}
+                >
                   Sign Up
                 </button>
               </form>
