@@ -30,6 +30,7 @@ const FoodDetails = () => {
   // const { id } = useParams();
 
   const dispatch = useDispatch();
+  
 
   const product = prod.filter((product) => Number(product.id) === Number(id));
 
