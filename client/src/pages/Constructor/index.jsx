@@ -114,7 +114,8 @@ const Register = () => {
   };
 
   return (
-    <Helmet title="Constructor">
+    <>
+    <Helmet title="Constructor" />
       <section>
         <Container>
           <main>
@@ -150,7 +151,7 @@ const Register = () => {
           </main>
         </Container>
       </section>
-    </Helmet>
+      </>
   );
 };
 
