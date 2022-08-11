@@ -89,7 +89,6 @@ const Register = () => {
           }));
     }
   };
-  
 
   const handleDiscountInput = (e) => {
     const value = e.target.value.trim().toLowerCase();
@@ -115,8 +114,9 @@ const Register = () => {
   };
 
   return (
-    <Helmet title="Constructor">
-      <section className={styles.body}>
+    <>
+      <Helmet title="Constructor" />
+      <section>
         <Container>
           <main>
             <div className={styles.containerDiv}>
@@ -146,12 +146,12 @@ const Register = () => {
                   handleOrderSubmit={handleOrderSubmit}
                   closeConfirmationBtnRef={closeConfirmationBtnRef}
                 />
-              ) : null} 
+              ) : null}
             </div>
           </main>
         </Container>
       </section>
-    </Helmet>
+    </>
   );
 };
 
@@ -328,7 +328,7 @@ function OrderDetails({
 
 function OrderConfirmation({ closeConfirmationBtnRef, handleOrderSubmit }) {
   return (
-    <div className={styles.order-confirmation}>
+    <div className={styles.order - confirmation}>
       <div className={styles.order_modal}>
         <h2>Order Confirmed</h2>
         <p>Your pizza will be with you shortly!</p>

@@ -7,11 +7,11 @@ import 'remixicon/fonts/remixicon.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const App = ({ Component }) => {
+const App = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       <Layout>
-        <Component />
+        <Component {...pageProps} />
       </Layout>
     </Provider>
   );

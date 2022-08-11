@@ -69,7 +69,8 @@ const FoodDetails = () => {
   }
 
   return (
-    <Helmet title="Product-details">
+    <>
+    <Helmet title="Product-details" />
       <CommonSection title={product.title} />
 
       <section>
@@ -228,7 +229,7 @@ const FoodDetails = () => {
           }
         })}
       </section>
-    </Helmet>
+      </>
   );
 };
 

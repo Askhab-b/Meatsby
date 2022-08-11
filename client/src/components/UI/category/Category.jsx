@@ -1,32 +1,25 @@
-import React from 'react';
-
 import { Container, Row, Col } from 'reactstrap';
-
-import categoryImg01 from '../../../assets/images/category-01.png';
-import categoryImg02 from '../../../assets/images/category-02.png';
-import categoryImg03 from '../../../assets/images/category-03.png';
-import categoryImg04 from '../../../assets/images/category-04.png';
 
 // import '../../../styles/category.css';
 
 const categoryData = [
   {
     display: 'Fastfood',
-    imgUrl: categoryImg01,
+    imgUrl: '/assets/images/category-01.png',
   },
   {
     display: 'Pizza',
-    imgUrl: categoryImg02,
+    imgUrl: '/assets/images/category-02.png',
   },
 
   {
     display: 'Asian Food',
-    imgUrl: categoryImg03,
+    imgUrl: '/assets/images/category-03.png',
   },
 
   {
     display: 'Row Meat',
-    imgUrl: categoryImg04,
+    imgUrl: '/assets/images/category-04.png',
   },
 ];
 

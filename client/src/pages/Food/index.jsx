@@ -46,7 +46,8 @@ const AllFoods = () => {
   };
 
   return (
-    <Helmet title="All-Foods">
+    <>
+    <Helmet title="All-Foods" />
       <CommonSection title="All Foods" />
 
       <section>
@@ -95,7 +96,7 @@ const AllFoods = () => {
           </Row>
         </Container>
       </section>
-    </Helmet>
+      </>
   );
 };
 
