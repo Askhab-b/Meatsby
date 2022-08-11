@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import '../../../styles/product-card.css';
+import styles from './Product.module.css';
 
 import Link from 'next/link';
 
@@ -25,18 +25,18 @@ const ProductCard = (props) => {
   };
 
   return (
-    <div className="product__item">
-      <div className="product__img">
+    <div className={styles.product__item}>
+      <div className={styles.product__img}>
         <img src={`http://localhost:4200/${image01}`} alt="product-img" className="w-50" />
       </div>
 
-      <div className="product__content">
+      <div className={styles.product__content}>
         <h5>
           <Link href={`/foods/${id}`}>{title}</Link>
         </h5>
-        <div className=" d-flex align-items-center justify-content-between ">
-          <span className="product__price">${price}</span>
-          <button className="addTOCart__btn" onClick={addToCart}>
+        <div className=" d-flex align-items-center justify-content-between">
+          <span className={styles.product__price}>${price}</span>
+          <button className={styles.addTOCart__btn} onClick={addToCart}>
             Add to Cart
           </button>
         </div>
