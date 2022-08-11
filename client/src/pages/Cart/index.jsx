@@ -2,7 +2,7 @@ import React from 'react';
 
 import CommonSection from '../../components/UI/common-section/CommonSection';
 import Helmet from '../../components/Helmet/Helmet';
-// import './cart-page.module.css';
+import styles from './Cart.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
 import { cartActions } from '../../store/shopping-cart/cartSlice';
@@ -14,7 +14,8 @@ const Cart = () => {
 
   console.log(cartItems);
   return (
-    <Helmet title="Cart">
+    <>
+    <Helmet title="Cart" />
       <CommonSection title="Your Cart" />
       <section>
         <Container>
@@ -23,7 +24,7 @@ const Cart = () => {
               {cartItems.length === 0 ? (
                 <h5 className="text-center">Your cart is empty</h5>
               ) : (
-                <table className="table table-bordered">
+                <table className={`${styles.table} table-bordered`}>
                   <thead>
                     <tr>
                       <th>Image</th>
@@ -59,7 +60,7 @@ const Cart = () => {
           </Row>
         </Container>
       </section>
-    </Helmet>
+      </>
   );
 };
 

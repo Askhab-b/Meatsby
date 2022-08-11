@@ -7,8 +7,7 @@ import { Container, Row, Col } from 'reactstrap';
 import ProductCard from '../../components/UI/product-card/ProductCard';
 import ReactPaginate from 'react-paginate';
 
-// import './all-foods.module.css';
-// import './pagination.module.css';
+import styles from './Food.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getProduct } from '../../store/shopping-cart/productSlice';
@@ -47,14 +46,15 @@ const AllFoods = () => {
   };
 
   return (
-    <Helmet title="All-Foods">
+    <>
+    <Helmet title="All-Foods" />
       <CommonSection title="All Foods" />
 
       <section>
         <Container>
           <Row>
             <Col lg="6" md="6" sm="6" xs="12">
-              <div className="search__widget d-flex align-items-center justify-content-between ">
+              <div className={`${styles.search__widget} d-flex align-items-center justify-content-between`}>
                 <input
                   type="text"
                   placeholder="I'm looking for...."
@@ -62,12 +62,12 @@ const AllFoods = () => {
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <span>
-                  <i class="ri-search-line"></i>
+                  <i className="ri-search-line"></i>
                 </span>
               </div>
             </Col>
             <Col lg="6" md="6" sm="6" xs="12" className="mb-5">
-              <div className="sorting__widget text-end">
+              <div className={`${styles.sorting__widget} text-end`}>
                 <select className="w-50">
                   <option>Default</option>
                   <option value="ascending">Alphabetically, A-Z</option>
@@ -96,7 +96,7 @@ const AllFoods = () => {
           </Row>
         </Container>
       </section>
-    </Helmet>
+      </>
   );
 };
 

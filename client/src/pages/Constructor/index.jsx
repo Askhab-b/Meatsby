@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from '../../components/Helmet/Helmet';
 import { Container } from 'reactstrap';
 import { useRef, useState } from 'react';
-// import '../styles/pizza-builder.module.css';
+import styles from './Pizza.module.css';
 
 const Register = () => {
   const [state, setState] = useState({
@@ -114,11 +114,12 @@ const Register = () => {
   };
 
   return (
-    <Helmet title="Constructor">
+    <>
+      <Helmet title="Constructor" />
       <section>
         <Container>
           <main>
-            <div className="containerDiv">
+            <div className={styles.containerDiv}>
               <ToppingSelect
                 toppingOptions={Object.entries(state.toppingOptions)}
                 toppingPrice={(state.toppingPrice / 100).toFixed(2)}
@@ -150,15 +151,15 @@ const Register = () => {
           </main>
         </Container>
       </section>
-    </Helmet>
+    </>
   );
 };
 
 function ToppingSelect({ toppingOptions, toppingPrice, handleToppingOptionClick }) {
   return (
-    <div className="topping-select">
+    <div className={styles.topping_select}>
       <h2>Toppings</h2>
-      <ul className="toppings-info">
+      <ul className={styles.toppings_info}>
         <li>
           <ToppingIcon iconType={'vegetarian'} /> Vegetarian
         </li>
@@ -169,8 +170,8 @@ function ToppingSelect({ toppingOptions, toppingPrice, handleToppingOptionClick 
           <ToppingIcon iconType={'hot'} /> Hot & Spicy
         </li>
       </ul>
-      <p className="toppings-info">Toppings charged at {`$${toppingPrice}`} each.</p>
-      <ul className="topping-options" onClick={handleToppingOptionClick}>
+      <p className={styles.toppings_info}>Toppings charged at {`${toppingPrice}`} each.</p>
+      <ul className={styles.topping_options} onClick={handleToppingOptionClick}>
         {toppingOptions.map((topping) => (
           <ToppingOption key={topping[0]} topping={topping[0]} toppingIcons={topping[1].icons} />
         ))}
@@ -181,19 +182,19 @@ function ToppingSelect({ toppingOptions, toppingPrice, handleToppingOptionClick 
 
 function ToppingOption({ topping, toppingIcons }) {
   return (
-    <li className="topping-option">
-      <input type="checkbox" id={topping} className="topping-input" />
+    <li className={styles.topping_option}>
+      <input type="checkbox" id={topping} className={styles.topping_input} />
       <label
-        className="topping-label"
+        className={styles.topping_label}
         htmlFor={topping}
-        aria-label={`${topping} (${toppingIcons.map((icon) => icon)})`}
+        aria-label={`${topping} ${toppingIcons.map((icon) => icon)}`}
       >
-        <div className="topping-image">
-          <div className={`${topping} topping-image-item`}></div>
+        <div className={styles.topping_image}>
+          <div className={styles.topping && styles.topping_image_item}></div>
         </div>
-        <span className="topping-label-content">
-          <span className="topping-label-text">{topping}</span>
-          <span className="topping-label-icons">
+        <span className={styles.topping_label_content}>
+          <span className={styles.topping_label_text}>{topping}</span>
+          <span className={styles.topping_label_icons}>
             {toppingIcons.map((icon) => (
               <ToppingIcon key={icon} iconType={icon} />
             ))}
@@ -206,7 +207,7 @@ function ToppingOption({ topping, toppingIcons }) {
 
 function ToppingIcon({ iconType }) {
   return (
-    <span className={`topping-icon ${iconType.split(' ')[0]}`} aria-label={iconType}>
+    <span className={`${styles.topping_icon} ${iconType.split(' ')[0]}`} aria-label={iconType}>
       {iconType.charAt(0).toUpperCase()}
     </span>
   );
@@ -214,8 +215,8 @@ function ToppingIcon({ iconType }) {
 
 function Pizza({ toppingOptions, selectedToppings }) {
   return (
-    <div className="pizza-container">
-      <div className="pizza">
+    <div className={styles.pizza_container}>
+      <div className={styles.pizza}>
         {selectedToppings.map((topping) => (
           <PizzaTopping
             key={topping}
@@ -233,7 +234,7 @@ function PizzaTopping({ topping, toppingAmount }) {
 
   for (let i = 1; i <= toppingAmount; i++) {
     toppings.push(
-      <div key={`${topping + i}`} className={`topping ${topping} ${topping}-${i} `}></div>
+      <div key={`${topping + i}`} className={`${styles.topping} ${styles.topping}-${i} `}></div>
     );
   }
 
@@ -252,22 +253,22 @@ function OrderDetails({
   const validDiscount = Object.keys(discount.codes).includes(discount.userCode);
 
   return (
-    <div className="order">
+    <div className={styles.order}>
       <h2>Order Details</h2>
-      <div className="order-toppings">
+      <div className={styles.order_toppings}>
         <h3>Toppings:</h3>
-        <ul className="order-toppings-list">
+        <ul className={styles.order_toppings_list}>
           <li>Cheese</li>
           {selectedToppings.map((topping) => (
             <li key={topping}>{topping}</li>
           ))}
         </ul>
       </div>
-      <div className="order-discount">
+      <div className={styles.order_discount}>
         <h3>Discount Code:</h3>
         <input
           type="text"
-          className="discount-input"
+          className={styles.discount_input}
           spellCheck="false"
           value={discount.userCode}
           maxLength="10"
@@ -280,7 +281,7 @@ function OrderDetails({
           validDiscount ? (
             <p
               id="discount-message"
-              className="discount-message discount-message--valid"
+              className={`${styles.discount_message} ${styles.discount_message__valid}`}
               role="alert"
             >
               Valid Code: {discount.codes[discount.userCode]}% Off
@@ -288,7 +289,7 @@ function OrderDetails({
           ) : (
             <p
               id="discount-message"
-              className="discount-message discount-message--invalid"
+              className={`${styles.discount_message} ${styles.discount_message__invalid}`}
               role="alert"
             >
               Invalid Code
@@ -303,10 +304,10 @@ function OrderDetails({
           Apply
         </button>
       </div>
-      <div className="order-price">
+      <div className={styles.order_price}>
         <h3>Total Price:</h3>
-        <p className="price">
-          {`$${
+        <p className={styles.price}>
+          {`${
             discount.applied && validDiscount
               ? (totalPrice - totalPrice * (discount.codes[discount.userCode] / 100)).toFixed(2)
               : totalPrice
@@ -327,8 +328,8 @@ function OrderDetails({
 
 function OrderConfirmation({ closeConfirmationBtnRef, handleOrderSubmit }) {
   return (
-    <div className="order-confirmation">
-      <div className="order-modal">
+    <div className={styles.order - confirmation}>
+      <div className={styles.order_modal}>
         <h2>Order Confirmed</h2>
         <p>Your pizza will be with you shortly!</p>
         <button

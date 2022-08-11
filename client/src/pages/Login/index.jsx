@@ -37,7 +37,8 @@ const Login = () => {
   const error = useSelector((state) => state.auth.error);
 
   return (
-    <Helmet title="Login">
+    <>
+    <Helmet title="Login" />
       <CommonSection title="Login" />
       <section>
         <Container>
@@ -73,8 +74,8 @@ const Login = () => {
           </Row>
         </Container>
       </section>
-    </Helmet>
-  );
+  </>
+);
 };
 
 export default Login;

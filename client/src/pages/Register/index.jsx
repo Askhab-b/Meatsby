@@ -42,7 +42,8 @@ const Register = () => {
   const error = useSelector((state) => state.auth.error);
 
   return (
-    <Helmet title="Signup">
+    <>
+    <Helmet title="Signup" />
       <CommonSection title="Signup" />
       <section>
         <Container>
@@ -100,7 +101,7 @@ const Register = () => {
           </Row>
         </Container>
       </section>
-    </Helmet>
+      </>
   );
 };
 

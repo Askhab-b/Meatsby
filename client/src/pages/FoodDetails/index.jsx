@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 //import products from '../assets/fake-data/products';
 
+import { useRouter } from 'next/router'
 import Helmet from '../../components/Helmet/Helmet';
 import CommonSection from '../../components/UI/common-section/CommonSection';
 import { Container, Row, Col } from 'reactstrap';
@@ -27,7 +28,9 @@ const FoodDetails = () => {
 
   const loading = useSelector((state) => state.product.loading);
 
-  // const { id } = useParams();
+  const router = useRouter()
+  console.log(router);
+  const { id } = router.query;
 
   const dispatch = useDispatch();
   
@@ -69,7 +72,8 @@ const FoodDetails = () => {
   }
 
   return (
-    <Helmet title="Product-details">
+    <>
+    <Helmet title="Product-details" />
       <CommonSection title={product.title} />
 
       <section>
@@ -231,7 +235,7 @@ const FoodDetails = () => {
           }
         })}
       </section>
-    </Helmet>
+      </>
   );
 };
 

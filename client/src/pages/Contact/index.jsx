@@ -1,7 +1,7 @@
-// import './contact-page.module.css';
+import styles from './Contact.module.css';
 
 const Contact = () => {
-  return <div className="contact__container"></div>;
+  return <div className={styles.contact__container}></div>;
 };
 
 

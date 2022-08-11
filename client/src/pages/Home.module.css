@@ -41,26 +41,26 @@
   color: #df2020 !important;
 }
 
-.tasty__treat-title span {
+.tasty__treat_title span {
   color: #df2020;
 }
 
-.tasty__treat-desc {
+.tasty__treat_desc {
   color: #777;
   line-height: 28px;
 }
 
-.choose__us-title {
+.choose__us_title {
   font-weight: 600;
   margin-bottom: 10px;
 }
 
-.choose__us-title i {
+.choose__us_title i {
   font-weight: 500 !important;
   color: #df2020;
 }
 
-.choose__us-desc {
+.choose__us_desc {
   color: #777;
 }
 
@@ -126,15 +126,15 @@
     font-size: 0.7rem;
   }
 
-  .tasty__treat-desc {
+  .tasty__treat_desc {
     font-size: 0.8rem;
     margin-bottom: 0;
   }
-  .choose__us-title {
+  .choose__us_title {
     font-size: 0.8rem;
   }
 
-  .choose__us-desc {
+  .choose__us_desc {
     font-size: 0.7rem;
   }
 
@@ -157,7 +157,67 @@
   .hero__service {
     justify-content: center;
   }
-  .why__choose-us {
+  .why__choose_us {
     padding-top: 0 !important;
   }
+}
+
+.hero__content {
+  padding-top: 70px;
+}
+
+.hero__title {
+  font-size: 2.5rem;
+  line-height: 55px;
+}
+
+.hero__title span {
+  color: #df2020;
+}
+
+.hero__content p {
+  font-size: 1rem;
+  line-height: 30px;
+  color: #777;
+}
+
+.hero__btns button {
+  border: none;
+  outline: none;
+  padding: 7px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.order__btn {
+  background: #df2020;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.order__btn:hover {
+  background: #212245;
+}
+.all__foods_btn {
+  background: transparent;
+  border: 1px solid #df2020 !important;
+}
+
+.all__foods_btn a {
+  color: #df2020;
+}
+
+.hero__service p {
+  color: #212245;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.shipping__icon i {
+  padding: 5px;
+  background: #df2020;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 500 !important;
 }
