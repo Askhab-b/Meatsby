@@ -1,25 +1,25 @@
-.cart__item-info img {
+.cart__item_info img {
   width: 35px;
   height: 35px;
   object-fit: cover;
 }
 
-.cart__product-title {
+.cart__product_title {
   font-size: 0.8rem;
   font-weight: 600;
 }
 
-.cart__product-price {
+.cart__product_price {
   font-size: 0.8rem;
 }
 
-.cart__product-price span {
+.cart__product_price span {
   font-size: 0.9rem;
   font-weight: 600;
   color: #df2020;
 }
 
-.increase__decrease-btn {
+.increase__decrease_btn {
   background: #fde4e4;
   padding: 2px 5px;
   border-radius: 5px;

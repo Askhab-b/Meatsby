@@ -1,17 +1,17 @@
 import React from 'react';
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
 
-// import '../../styles/footer.css';
+import styles from './Footer.module.css';
 
 import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className={styles.footer}>
       <Container>
         <Row>
           <Col lg="3" md="4" sm="6">
-            <div className=" footer__logo text-start">
+            <div className={`${styles.footer__logo} text-start`}>
               <img src='../../assets/images/res-logo.png' alt="logo" />
               <h5>Meatsby</h5>
               <p>
@@ -21,14 +21,14 @@ const Footer = () => {
           </Col>
 
           <Col lg="3" md="4" sm="6">
-            <h5 className="footer__title">Delivery Time</h5>
-            <ListGroup className="deliver__time-list">
-              <ListGroupItem className=" delivery__time-item border-0 ps-0">
+            <h5 className={styles.footer__title}>Delivery Time</h5>
+            <ListGroup className={styles.deliver__time_list}>
+              <ListGroupItem className={`${styles.delivery__time_item} border-0 ps-0`}>
                 <span>Sunday - Thursday</span>
                 <p>10:00am - 11:00pm</p>
               </ListGroupItem>
 
-              <ListGroupItem className=" delivery__time-item border-0 ps-0">
+              <ListGroupItem className={`${styles.delivery__time_item} border-0 ps-0`}>
                 <span>Friday - Saturday</span>
                 <p>Off day</p>
               </ListGroupItem>
@@ -36,25 +36,25 @@ const Footer = () => {
           </Col>
 
           <Col lg="3" md="4" sm="6">
-            <h5 className="footer__title">Contact</h5>
-            <ListGroup className="deliver__time-list">
-              <ListGroupItem className=" delivery__time-item border-0 ps-0">
+            <h5 className={styles.footer__title}>Contact</h5>
+            <ListGroup className={styles.deliver__time_list}>
+              <ListGroupItem className={`${styles.delivery__time_item} border-0 ps-0`}>
                 <p>Location: Grozny, Trosheva 7</p>
               </ListGroupItem>
-              <ListGroupItem className=" delivery__time-item border-0 ps-0">
+              <ListGroupItem className={`${styles.delivery__time_item} border-0 ps-0`}>
                 <span>Phone: +7(928)666-99-66</span>
               </ListGroupItem>
 
-              <ListGroupItem className=" delivery__time-item border-0 ps-0">
+              <ListGroupItem className={`${styles.delivery__time_item} border-0 ps-0`}>
                 <span>Email: imran.bursagov@gmail.com</span>
               </ListGroupItem>
             </ListGroup>
           </Col>
 
           <Col lg="3" md="4" sm="6">
-            <h5 className="footer__title">Newsletter</h5>
+            <h5 className={styles.footer__title}>Newsletter</h5>
             <p>Subscribe our newsletter</p>
-            <div className="newsletter">
+            <div className={styles.newsletter}>
               <input type="email" placeholder="Enter your email" />
               <span>
                 <i className="ri-send-plane-line"></i>
@@ -65,12 +65,12 @@ const Footer = () => {
 
         <Row className="mt-5">
           <Col lg="6" md="6">
-            <p className="copyright__text">
+            <p className={styles.copyright__text}>
               Copyright - 2022, website made by Imran Bursagov. All Rights Reserved.
             </p>
           </Col>
           <Col lg="6" md="6">
-            <div className="social__links d-flex align-items-center gap-4 justify-content-end">
+            <div className={`${styles.social__links} d-flex align_items-center gap-4 justify-content-end`}>
               <p className="m-0">Follow: </p>
               <span>
                 {' '}

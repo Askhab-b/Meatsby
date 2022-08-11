@@ -7,7 +7,7 @@ import CartItem from './CartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartUiActions } from '../../../store/shopping-cart/cartUiSlice';
 
-import '../../../styles/shopping-cart.css';
+import styles from './Shopping.module.css'
 
 const Carts = () => {
   const token = useSelector((state) => state.auth.token);
@@ -19,15 +19,15 @@ const Carts = () => {
     dispatch(cartUiActions.toggle());
   };
   return (
-    <div className="cart__container">
+    <div className={styles.cart__container}>
       <ListGroup className="cart">
-        <div className="cart__close">
+        <div className={styles.cart__close}>
           <span onClick={toggleCart}>
             <i class="ri-close-fill"></i>
           </span>
         </div>
 
-        <div className="cart__item-list">
+        <div className={styles.cart__item_list}>
           {cartProducts.length === 0 ? (
             <h6 className="text-center mt-5">No item added to the cart</h6>
           ) : (
@@ -35,7 +35,7 @@ const Carts = () => {
           )}
         </div>
 
-        <div className="cart__bottom d-flex align-items-center justify-content-between">
+        <div className={`${styles.cart__bottom} d-flex align-items-center justify-content-between`}>
           <h6>
             Subtotal : <span>${totalAmount}</span>
           </h6>

@@ -21,17 +21,17 @@
   line-height: 28px;
 }
 
-.delivery__time-item {
+.delivery__time_item {
   background: transparent !important;
 }
 
-.delivery__time-item span {
+.delivery__time_item span {
   font-weight: 600;
   font-size: 1rem;
   color: #212245;
 }
 
-.delivery__time-item p {
+.delivery__time_item p {
   color: #212245;
 }
 .footer__title {
@@ -46,7 +46,7 @@
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align_items: center;
   cursor: pointer;
 }
 .newsletter input {
@@ -101,11 +101,11 @@
     font-size: 0.8rem;
   }
 
-  .delivery__time-item span {
+  .delivery__time_item span {
     font-size: 0.8rem;
   }
 
-  .delivery__time-item p {
+  .delivery__time_item p {
     font-size: 0.7rem;
     margin-bottom: 0;
   }
