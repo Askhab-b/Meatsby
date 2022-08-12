@@ -23,11 +23,14 @@ export const createUser = createAsyncThunk('auth/createUser', async (params) => 
 
 export const doLogin = createAsyncThunk('auth/doLogin', async (params) => {
   const { data } = await axios.post('/login', params)
+  .then(function (response) {
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('user', data.user);
+    console.log(response);
+  })
   .catch(function (error) {
     console.log(error.toJSON());
   });
-  localStorage.setItem('token', data.token);
-  localStorage.setItem('user', data.user);
   
   return data;
 });
