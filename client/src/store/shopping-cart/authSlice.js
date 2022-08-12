@@ -1,61 +1,35 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from '../../api/axios'
 
 if (typeof window !== 'undefined') { var user = localStorage.getItem('token') }
 
-  var initialState = {
-    signingUp: false,
-    signingIn: false,
-    user: {},
-    error: null,
-    registered: false,
-    token: user,
-  }
+var initialState = {
+  signingUp: false,
+  signingIn: false,
+  user: {},
+  error: null,
+  registered: false,
+  token: user,
+}
 
-export const createUser = createAsyncThunk(
-  'auth/createUser',
-  async ({ email, password, firstname, lastname }, thunkAPI) => {
-    try {
-      const res = await fetch('http://localhost:4200/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ firstname, lastname, email, password }),
-      });
-      const data = await res.json();
-      if (data.error) {
-        console.log(data);
-        return thunkAPI.rejectWithValue(data.error);
-      } else {
-        return thunkAPI.fulfillWithValue(data);
-      }
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
+export const createUser = createAsyncThunk('auth/createUser', async (params) => {
+  const { data } = await axios.post('/register', params) 
+  .catch(function (error) {
+    console.log(error.toJSON());
+  });
 
-export const doLogin = createAsyncThunk('auth/doLogin', async (payload, thunkAPI) => {
-  try {
-    const res = await fetch('http://localhost:4200/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email: payload.email, password: payload.password }),
-    });
-    const data = await res.json();
-    console.log(data);
-    if (data.error) {
-      return thunkAPI.rejectWithValue(data.error);
-    } else {
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', data.user);
-      return thunkAPI.fulfillWithValue(data);
-    }
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
-  }
+  return data;
+});
+
+export const doLogin = createAsyncThunk('auth/doLogin', async (params) => {
+  const { data } = await axios.post('/login', params)
+  .catch(function (error) {
+    console.log(error.toJSON());
+  });
+  localStorage.setItem('token', data.token);
+  localStorage.setItem('user', data.user);
+  
+  return data;
 });
 
 export const logOut = createAsyncThunk('auth/logOut', async (req, res) => {
