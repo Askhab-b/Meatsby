@@ -1,4 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from '../../api/axios'
+
+export const getProduct = createAsyncThunk('get/product', async () => {
+  const { data } = await axios.get(`/product`)
+  .catch(function (error) {
+    console.log(error.toJSON());
+  });
+
+  return data;
+});
 
 const initialState = {
   products: [],
@@ -27,14 +37,6 @@ const productSlice = createSlice({
   },
 });
 
-export const getProduct = createAsyncThunk('get/product', async (_, thunkAPI) => {
-  try {
-    const res = await fetch('http://localhost:4200/product');
-    return res.json();
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
-  }
-});
 
 export const cartActions = productSlice.actions;
 export default productSlice.reducer;
