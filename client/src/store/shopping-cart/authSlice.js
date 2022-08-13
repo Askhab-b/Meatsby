@@ -1,17 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../api/axios'
 
-if (typeof window !== 'undefined') { var user = localStorage.getItem('token') }
-
-var initialState = {
-  signingUp: false,
-  signingIn: false,
-  user: {},
-  error: null,
-  registered: false,
-  token: user,
-}
-
 export const createUser = createAsyncThunk('auth/createUser', async (params) => {
   const { data } = await axios.post('/register', params) 
   .catch(function (error) {
@@ -38,6 +27,16 @@ export const doLogin = createAsyncThunk('auth/doLogin', async (params) => {
 export const logOut = createAsyncThunk('auth/logOut', async (req, res) => {
   localStorage.removeItem('token');
 });
+
+var initialState = {
+  signingUp: false,
+  signingIn: false,
+  user: {},
+  error: null,
+  registered: false,
+  token: '',
+}
+
 
 const authSlice = createSlice({
   name: 'auth',
