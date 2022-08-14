@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 //import products from '../assets/fake-data/products';
 
@@ -7,14 +7,13 @@ import Helmet from '../../components/Helmet/Helmet';
 import CommonSection from '../../components/UI/common-section/CommonSection';
 import { Container, Row, Col } from 'reactstrap';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../../store/shopping-cart/cartSlice';
 
 // import './product-details.module.css';
 
 import ProductCard from '../../components/UI/product-card/ProductCard';
 import { getProduct } from '../../store/shopping-cart/productSlice';
-import { useSelector } from 'react-redux';
 import styles from './Product.module.css';
 
 const FoodDetails = () => {

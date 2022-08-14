@@ -12,7 +12,7 @@ import { logOut } from '../../store/shopping-cart/authSlice';
 const nav__links = [
   {
     display: 'Home',
-    path: '/home',
+    path: '/',
   },
   {
     display: 'Foods',
