@@ -1,12 +1,6 @@
 /* Base Styles */
 
 .body {
-  --red: #ce442c;
-  --blue: #0e447a;
-  --light-blue: #1b558e;
-  --green: #428302;
-  --white: #fcfcfc;
-  --shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   font-family: 'Roboto Slab', serif;
   font-weight: 400;
   min-height: 100vh;
@@ -260,6 +254,7 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.16) inset, var(--shadow);
 }
 
+
 .pizza {
   position: relative;
   width: 100%;
@@ -271,28 +266,28 @@
       rgba(0, 0, 0, 0.04) 50.15%,
       transparent 50.15%
     ),
-    linear_gradient(
+    linear-gradient(
       90deg,
       transparent 49.85%,
       rgba(0, 0, 0, 0.04) 49.85%,
       rgba(0, 0, 0, 0.04) 50.15%,
       transparent 50.15%
     ),
-    linear_gradient(
+    linear-gradient(
       45deg,
       transparent 49.85%,
       rgba(0, 0, 0, 0.04) 49.85%,
       rgba(0, 0, 0, 0.04) 50.15%,
       transparent 50.15%
     ),
-    linear_gradient(
+    linear-gradient(
       -45deg,
       transparent 49.85%,
       rgba(0, 0, 0, 0.04) 49.85%,
       rgba(0, 0, 0, 0.04) 50.15%,
       transparent 50.15%
     ),
-    radial_gradient(circle, #fcfc8f, #fdfd81 59.5%, #c79d81 60%, #836551 70%);
+    radial-gradient(circle, #fcfc8f, #fdfd81 59.5%, #c79d81 60%, #836551 70%);
 }
 
 .pizza::after {
@@ -325,7 +320,7 @@
   text-transform: capitalize;
 }
 
-.order_toppings-list li {
+.order_toppings_list li {
   flex: 1 0 170px;
   list-style-type: disc;
   padding-right: 20px;
@@ -599,7 +594,7 @@
   width: 10%;
   height: 10%;
   border-radius: 50%;
-  background-image: radial_gradient(circle, #c09d86, #795843);
+  background-image: radial-gradient(circle, #c09d86, #795843);
 }
 
 .sausage_1 {
@@ -678,7 +673,7 @@
   width: 12%;
   height: 7%;
   border-radius: 15%;
-  background-image: radial_gradient(#a3577d, #ffc0cb);
+  background-image: radial-gradient(#a3577d, #ffc0cb);
 }
 
 .ham_1 {
