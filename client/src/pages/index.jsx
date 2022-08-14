@@ -70,12 +70,12 @@ const Home = () => {
 
   return (
     <>
-    <Helmet title="Главная" />
+      <Helmet title="Главная" />
       <section>
         <Container>
           <Row>
             <Col lg="6" md="6">
-              <div className={styles.hero__content}>
+              <div data-aos="zoom-out-right" className={styles.hero__content}>
                 <h5 className="mb-3">Easy way to make an order</h5>
                 <h1 className={`mb-4 ${styles.hero__title}`}>
                   <span>HUNGRY?</span> Just wait <br /> food at
@@ -88,7 +88,9 @@ const Home = () => {
                 </p>
 
                 <div className={`${styles.hero__btns} d-flex align-items-center gap-5 mt-4`}>
-                  <button className={`${styles.order__btn} d-flex align-items-center justify-content-between`}>
+                  <button
+                    className={`${styles.order__btn} d-flex align-items-center justify-content-between`}
+                  >
                     Order now <i className="ri-arrow-right-s-line"></i>
                   </button>
 
@@ -116,28 +118,31 @@ const Home = () => {
             </Col>
 
             <Col lg="6" md="6">
-              <div className={styles.hero__img}>
-                <img src='/assets/images/hero.png' alt="hero-img" className="w-100" />
+              <div data-aos="zoom-out-left" className={styles.hero__img}>
+                <img src="/assets/images/hero.png" alt="hero-img" className="w-100" />
               </div>
             </Col>
           </Row>
         </Container>
       </section>
 
-      <section className="pt-0">
+      <section data-aos="fade-up"
+     data-aos-anchor-placement="bottom-bottom" className="pt-0">
         <Category />
       </section>
 
       <section>
         <Container>
-          <Row>
+          <Row  data-aos="flip-left"
+               data-aos-easing="ease-out-cubic"
+               data-aos-duration="1500">
             <Col lg="12" className="text-center">
               <h5 className={`${styles.feature__subtitle} mb-4`}>What we serve</h5>
               <h2 className={styles.feature__title}>Just sit back at home</h2>
               <h2 className={styles.feature__title}>
                 we will <span>take care</span>
               </h2>
-                <p className={`mb-1 mt-4 ${styles.feature__text}`}>
+              <p className={`mb-1 mt-4 ${styles.feature__text}`}>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, officiis?
               </p>
               <p className={styles.feature__text}>
@@ -147,7 +152,10 @@ const Home = () => {
 
             {featureData.map((item, index) => (
               <Col lg="4" md="6" sm="6" key={index} className="mt-5">
-                <div className={`${styles.feature__item} text-center px-5 py-3`}>
+                <div
+                  data-aos="zoom-out-up"
+                  className={`${styles.feature__item} text-center px-5 py-3`}
+                >
                   <img src={item.imgUrl} alt="feature-img" className="w-25 mb-3" />
                   <h5 className=" fw-bold mb-3">{item.title}</h5>
                   <p>{item.desc}</p>
@@ -160,15 +168,19 @@ const Home = () => {
 
       <section>
         <Container>
-          <Row>
+          <Row  data-aos="flip-up">
             <Col lg="12" className="text-center">
               <h2>Popular Foods</h2>
             </Col>
 
             <Col lg="12">
-              <div className={`${styles.food__category} d-flex align-items-center justify-content-center gap-4`}>
+              <div
+                className={`${styles.food__category} d-flex align-items-center justify-content-center gap-4`}
+              >
                 <button
-                  className={`${styles.all__btn} ${category === 'ALL' ? styles.foodBtnActive : ''} `}
+                  className={`${styles.all__btn} ${
+                    category === 'ALL' ? styles.foodBtnActive : ''
+                  } `}
                   onClick={() => setCategory('ALL')}
                 >
                   All
@@ -179,7 +191,7 @@ const Home = () => {
                   } `}
                   onClick={() => setCategory('BURGER')}
                 >
-                  <img src='/assets/images/hamburger.png' alt="" />
+                  <img src="/assets/images/hamburger.png" alt="" />
                   Burger
                 </button>
 
@@ -189,7 +201,7 @@ const Home = () => {
                   } `}
                   onClick={() => setCategory('PIZZA')}
                 >
-                  <img src='/assets/images/pizza.png' alt="" />
+                  <img src="/assets/images/pizza.png" alt="" />
                   Pizza
                 </button>
 
@@ -199,7 +211,7 @@ const Home = () => {
                   } `}
                   onClick={() => setCategory('BREAD')}
                 >
-                  <img src='/assets/images/bread.png' alt="" />
+                  <img src="/assets/images/bread.png" alt="" />
                   Bread
                 </button>
               </div>
@@ -217,12 +229,16 @@ const Home = () => {
       <section className={styles.why__choose_us}>
         <Container>
           <Row>
-            <Col lg="6" md="6">
-              <img src='/assets/images/location.png' alt="why-tasty-treat" className="w-100" />
+            <Col data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="1500" lg="6" md="6">
+              <img src="/assets/images/location.png" alt="why-tasty-treat" className="w-100" />
             </Col>
 
             <Col lg="6" md="6">
-              <div className={styles.why__tasty_treat}>
+              <div  data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="1500"className={styles.why__tasty_treat}>
                 <h2 className={`${styles.tasty__treat_title} mb-4`}>
                   Why <span>Tasty Treat?</span>
                 </h2>
@@ -232,7 +248,8 @@ const Home = () => {
                   esse iste fugiat dolor, optio incidunt eligendi deleniti!
                 </p>
 
-                <ListGroup className="mt-4">
+                <ListGroup data-aos="fade-up"
+     data-aos-anchor-placement="bottom-bottom" className="mt-4">
                   <ListGroupItem className="border-0 ps-0">
                     <p className={`${styles.choose__us_title} d-flex align-items-center gap-2`}>
                       <i className="ri-checkbox-circle-line"></i> Fresh and tasty foods
@@ -268,7 +285,8 @@ const Home = () => {
 
       <section className="pt-0">
         <Container>
-          <Row>
+          <Row data-aos="fade-up"
+     data-aos-anchor-placement="bottom-bottom">
             <Col lg="12" className="text-center mb-5 ">
               <h2>Hot Pizza</h2>
             </Col>
@@ -285,7 +303,7 @@ const Home = () => {
       <section>
         <Container>
           <Row>
-            <Col lg="6" md="6">
+            <Col data-aos="fade-right" lg="6" md="6">
               <div className={styles.testimonial}>
                 <h5 className={`${styles.testimonial__subtitle} mb-4`}>Testimonial</h5>
                 <h2 className="testimonial__title mb-4">
@@ -300,14 +318,13 @@ const Home = () => {
               </div>
             </Col>
 
-            <Col lg="6" md="6">
-              <img src='/assets/images/network.png' alt="testimonial-img" className="w-100" />
+            <Col data-aos="fade-left" lg="6" md="6">
+              <img src="/assets/images/network.png" alt="testimonial-img" className="w-100" />
             </Col>
           </Row>
         </Container>
       </section>
-
-      </>
+    </>
   );
 };
 
