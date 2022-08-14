@@ -20,15 +20,15 @@ const nav__links = [
   },
   {
     display: 'Cart',
-    path: '/cart',
+    path: '/user_cart',
   },
   {
     display: 'Contact',
-    path: '/contact',
+    path: '/delievery_contact',
   },
   {
     display: 'Constructor',
-    path: '/constructor',
+    path: '/pizza_constructor',
   },
 ];
 
