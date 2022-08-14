@@ -8,47 +8,47 @@ const Register = () => {
   const [state, setState] = useState({
     toppingOptions: {
       pepperoni: {
-        icons: ['gluten free'],
+        icons: [`${styles.gluten} free`],
         amount: 12,
       },
       bacon: {
-        icons: ['gluten free'],
+        icons: [`${styles.gluten} free`],
         amount: 13,
       },
       ham: {
-        icons: ['gluten free'],
+        icons: [`${styles.gluten} free`],
         amount: 14,
       },
       sausage: {
-        icons: ['gluten free'],
+        icons: [`${styles.gluten} free`],
         amount: 13,
       },
       chicken: {
-        icons: ['gluten free'],
+        icons: [`${styles.gluten} free`],
         amount: 14,
       },
       onions: {
-        icons: ['vegetarian', 'gluten free'],
+        icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 15,
       },
       peppers: {
-        icons: ['vegetarian', 'gluten free'],
+        icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 15,
       },
       mushrooms: {
-        icons: ['vegetarian', 'gluten free'],
+        icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 22,
       },
       pineapple: {
-        icons: ['vegetarian', 'gluten free'],
+        icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 16,
       },
       olives: {
-        icons: ['vegetarian', 'gluten free'],
+        icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 19,
       },
       jalapenos: {
-        icons: ['vegetarian', 'gluten free', 'hot'],
+        icons: [`${styles.vegetarian}`, `${styles.gluten} free`, `${styles.hot}`],
         amount: 19,
       },
     },
@@ -75,16 +75,18 @@ const Register = () => {
   const closeConfirmationBtnRef = useRef();
 
   const handleToppingOptionClick = (e) => {
-    if (e.target.className === 'topping-input') {
+    if (e.target.className === styles.topping_input) {
       const selectedTopping = e.target.id;
 
       state.selectedToppings.includes(selectedTopping)
         ? setState((prevState) => ({
+            ...prevState,
             selectedToppings: prevState.selectedToppings.filter(
               (topping) => topping !== selectedTopping
             ),
           }))
         : setState((prevState) => ({
+            ...prevState,
             selectedToppings: [...prevState.selectedToppings, selectedTopping],
           }));
     }
@@ -93,18 +95,24 @@ const Register = () => {
   const handleDiscountInput = (e) => {
     const value = e.target.value.trim().toLowerCase();
 
-    setState((prevState) => ({ discount: { ...prevState.discount, userCode: value } }));
+    setState((prevState) => ({
+      ...prevState,
+      discount: { ...prevState.discount, userCode: value },
+    }));
     if (state.discount.applied) {
-      setState((prevState) => ({ discount: { ...prevState.discount, applied: false } }));
+      setState((prevState) => ({
+        ...prevState,
+        discount: { ...prevState.discount, applied: false },
+      }));
     }
   };
 
   const handleDiscountClick = () =>
-    setState((prevState) => ({ discount: { ...prevState.discount, applied: true } }));
+    setState((prevState) => ({ ...prevState, discount: { ...prevState.discount, applied: true } }));
 
   const handleOrderSubmit = () => {
     setState(
-      (prevState) => ({ orderConfirmed: !prevState.orderConfirmed }),
+      (prevState) => ({ ...prevState, orderConfirmed: !prevState.orderConfirmed }),
       () => {
         state.orderConfirmed
           ? closeConfirmationBtnRef.current.focus()
@@ -161,16 +169,16 @@ function ToppingSelect({ toppingOptions, toppingPrice, handleToppingOptionClick 
       <h2>Toppings</h2>
       <ul className={styles.toppings_info}>
         <li>
-          <ToppingIcon iconType={'vegetarian'} /> Vegetarian
+          <ToppingIcon iconType={styles.vegetarian} /> Vegetarian
         </li>
         <li>
-          <ToppingIcon iconType={'gluten free'} /> Gluten Free
+          <ToppingIcon iconType={`${styles.gluten} ${styles.free}`} /> Gluten Free
         </li>
         <li>
-          <ToppingIcon iconType={'hot'} /> Hot & Spicy
+          <ToppingIcon iconType={styles.hot} /> Hot & Spicy
         </li>
       </ul>
-      <p className={styles.toppings_info}>Toppings charged at {`${toppingPrice}`} each.</p>
+      <p className={styles.toppings_info}>Toppings charged at {`$${toppingPrice}`} each.</p>
       <ul className={styles.topping_options} onClick={handleToppingOptionClick}>
         {toppingOptions.map((topping) => (
           <ToppingOption key={topping[0]} topping={topping[0]} toppingIcons={topping[1].icons} />
@@ -190,7 +198,7 @@ function ToppingOption({ topping, toppingIcons }) {
         aria-label={`${topping} ${toppingIcons.map((icon) => icon)}`}
       >
         <div className={styles.topping_image}>
-          <div className={styles.topping && styles.topping_image_item}></div>
+          <div className={`${topping}`}></div>
         </div>
         <span className={styles.topping_label_content}>
           <span className={styles.topping_label_text}>{topping}</span>
@@ -234,7 +242,7 @@ function PizzaTopping({ topping, toppingAmount }) {
 
   for (let i = 1; i <= toppingAmount; i++) {
     toppings.push(
-      <div key={`${topping + i}`} className={`${styles.topping} ${styles.topping}-${i} `}></div>
+      <div key={`${topping + i}`} className={`topping ${topping} ${topping}-${i} `}></div>
     );
   }
 
@@ -297,7 +305,7 @@ function OrderDetails({
           )
         ) : null}
         <button
-          className="btn discount-btn"
+          className={`${styles.btn} ${styles.discount_btn}`}
           onClick={handleDiscountClick}
           aria-label="Apply Discount"
         >
@@ -314,7 +322,7 @@ function OrderDetails({
           }`}
         </p>
         <button
-          className="btn order-btn"
+          className={`${styles.btn} ${styles.order_btn}`}
           onClick={handleOrderSubmit}
           aria-label="Confirm Order"
           ref={confirmOrderBtnRef}
@@ -328,7 +336,7 @@ function OrderDetails({
 
 function OrderConfirmation({ closeConfirmationBtnRef, handleOrderSubmit }) {
   return (
-    <div className={styles.order - confirmation}>
+    <div className={styles.order_confirmation}>
       <div className={styles.order_modal}>
         <h2>Order Confirmed</h2>
         <p>Your pizza will be with you shortly!</p>
