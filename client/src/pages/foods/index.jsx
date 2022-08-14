@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Helmet from '../../components/Helmet/Helmet';
 import CommonSection from '../../components/UI/common-section/CommonSection';
 
@@ -9,7 +9,6 @@ import ReactPaginate from 'react-paginate';
 
 import styles from './Food.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { getProduct } from '../../store/shopping-cart/productSlice';
 
 const AllFoods = () => {
@@ -20,7 +19,7 @@ const AllFoods = () => {
 
   const prods = useSelector((state) => state.product.products);
 
-  useEffect(() => dispatch(getProduct()), [dispatch]);
+  // useEffect(() => dispatch(getProduct()), [dispatch]); // ошибка
 
   const searchedProduct = prods.filter((item) => {
     if (searchTerm.value === '') {
