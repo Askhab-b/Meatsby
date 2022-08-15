@@ -1,17 +1,11 @@
-import React from 'react';
-
-import styles from './Product.module.css';
-
+import styles from './Product.module.css'
 import Link from 'next/link';
-
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../../../store/shopping-cart/cartSlice';
 
 const ProductCard = (props) => {
   const { id, title, image01, price } = props.item;
   const dispatch = useDispatch();
-
-  console.log('ITEM', props);
 
   const addToCart = () => {
     dispatch(
@@ -32,7 +26,7 @@ const ProductCard = (props) => {
 
       <div className={styles.product__content}>
         <h5>
-          <Link href={`/foods/${id}`}>{title}</Link>
+          <Link href={`/food_details/${id}`}>{title}</Link>
         </h5>
         <div className=" d-flex align-items-center justify-content-between">
           <span className={styles.product__price}>${price}</span>

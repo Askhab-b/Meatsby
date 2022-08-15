@@ -1,16 +1,16 @@
-.cart__img-box {
+.cart__img_box {
   width: 80px;
 }
 
-.cart__img-box img {
+.cart__img_box img {
   width: 100%;
 }
 
-.cart__item-del i {
+.cart__item_del i {
   cursor: pointer;
 }
 
-.cart__page-btn button a:hover {
+.cart__page_btn button a:hover {
   color: #fff;
 }
 

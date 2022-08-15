@@ -1,10 +1,7 @@
-import React from 'react';
 import { ListGroupItem } from 'reactstrap';
-
 import styles from './Cart.module.css'
-
 import { useDispatch } from 'react-redux';
-import { cartActions } from '../../../store/shopping-cart/cartSlice';
+import { cartActions } from '@/store/shopping-cart/cartSlice';
 
 const CartItem = ({ item }) => {
   const { id, title, price, image01, quantity, totalPrice } = item;
@@ -31,7 +28,7 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <ListGroupItem className="border-0 cart__item">
+    <ListGroupItem className={`border-0 ${styles.cart__item}`}>
       <div className={`${styles.cart__item_info} d-flex gap-2`}>
         <img src={`http://localhost:4200/${image01}`} alt="product-img" />
 

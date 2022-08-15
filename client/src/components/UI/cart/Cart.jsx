@@ -1,23 +1,20 @@
-import React from 'react';
-
 import { ListGroup } from 'reactstrap';
 import Link from 'next/link';
 import CartItem from './CartItem';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { cartUiActions } from '../../../store/shopping-cart/cartUiSlice';
-
+import { cartUiActions } from '@/store/shopping-cart/cartUiSlice';
+import { selectIsAuth } from '@/store/shopping-cart/authSlice';
 import styles from './Shopping.module.css'
 
 const Carts = () => {
-  const token = useSelector((state) => state.auth.token);
+  const isAuth = useSelector(selectIsAuth)
   const dispatch = useDispatch();
   const cartProducts = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
-
   const toggleCart = () => {
-    dispatch(cartUiActions.toggle());
-  };
+    dispatch(cartUiActions.toggle())
+  }
+  
   return (
     <div className={styles.cart__container}>
       <ListGroup className="cart">
@@ -39,7 +36,7 @@ const Carts = () => {
           <h6>
             Subtotal : <span>${totalAmount}</span>
           </h6>
-          <button disabled={!token}>
+          <button disabled={!isAuth}>
             <Link href="/checkout" onClick={toggleCart}>
               Checkout
             </Link>

@@ -19,8 +19,6 @@ const AllFoods = () => {
 
   const prods = useSelector((state) => state.product.products);
 
-  // useEffect(() => dispatch(getProduct()), [dispatch]); // ошибка
-
   const searchedProduct = prods.filter((item) => {
     if (searchTerm.value === '') {
       return item;
@@ -33,7 +31,6 @@ const AllFoods = () => {
     }
   });
 
-  console.log(searchedProduct);
   const productPerPage = 12;
   const visitedPage = pageNumber * productPerPage;
   const displayPage = searchedProduct.slice(visitedPage, visitedPage + productPerPage);
@@ -44,6 +41,10 @@ const AllFoods = () => {
     setPageNumber(selected);
   };
 
+  useEffect(() => { 
+    dispatch(getProduct())
+  }, []);
+  
   return (
     <>
     <Helmet title="All-Foods" />
@@ -89,7 +90,7 @@ const AllFoods = () => {
                 onPageChange={changePage}
                 previousLabel={'Prev'}
                 nextLabel={'Next'}
-                containerClassName=" paginationBttns "
+                containerClassName={styles.paginationBttns}
               />
             </div>
           </Row>
