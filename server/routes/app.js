@@ -3,8 +3,7 @@ require('../config/database').connect();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-
-const auth = require('../middleware/auth');
+const { checkAuth } = require('../utils/index');
 
 const app = express();
 app.use(cors());
@@ -18,11 +17,30 @@ app.use(require('./product.route'));
 app.use(require('./user.route'));
 app.use(express.json({ limit: '50mb' }));
 
-app.get('/welcome', auth, (req, res) => {
-  res.status(200).send('Welcome 🙌 ');
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: (_, __, cb) => {
+    if (!fs.existsSync('uploads')) {
+      fs.mkdirSync('uploads');
+    }
+    cb(null, 'uploads');
+  },
+  filename: (_, file, cb) => {
+    cb(null, file.originalname);
+  },
 });
 
-// This should be the last route else any after it won't work
+const upload = multer({ storage });
+
+app.use('/uploads', express.static('uploads'));
+
+app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
+  res.json({
+    url: `/uploads/${req.file.originalname}`,
+  });
+});
+
+
 app.use('*', (req, res) => {
   res.status(404).json({
     success: 'false',

@@ -3,51 +3,48 @@ import Link from 'next/link';
 import { Container } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { HiLogout } from 'react-icons/hi';
-
-import { cartUiActions } from '../../store/shopping-cart/cartUiSlice';
-
+import { selectIsAuth } from '../../store/shopping-cart/authSlice';
+import { cartUiActions } from '@/store/shopping-cart/cartUiSlice';
 import styles from './Header.module.css'
-import { logOut } from '../../store/shopping-cart/authSlice';
+import { logout } from '../../store/shopping-cart/authSlice';
 
 const nav__links = [
   {
-    display: 'Home',
+    display: 'Главная',
     path: '/',
   },
   {
-    display: 'Foods',
+    display: 'Еда',
     path: '/foods',
   },
   {
-    display: 'Cart',
+    display: 'Корзина',
     path: '/user_cart',
   },
   {
-    display: 'Contact',
+    display: 'Контакты',
     path: '/delievery_contact',
   },
   {
-    display: 'Constructor',
+    display: 'Конструктор',
     path: '/pizza_constructor',
   },
 ];
 
 const Header = () => {
+  const isAuth = useSelector(selectIsAuth)
   const menuRef = useRef(null);
   const headerRef = useRef(null);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const dispatch = useDispatch();
-
-  const token = useSelector((state) => state.auth.token);
-
-  const toggleMenu = () => menuRef.current.classList.toggle('show__menu');
+  const toggleMenu = () => menuRef.current.classList.toggle(styles.show__menu);
 
   const toggleCart = () => {
     dispatch(cartUiActions.toggle());
   };
 
   const tokenRemoval = () => {
-    dispatch(logOut());
+    dispatch(logout());
   };
 
   useEffect(() => {
@@ -60,7 +57,7 @@ const Header = () => {
     });
 
     return () => window.removeEventListener('scroll', null );
-  }, []);
+  });
 
   return (
     <header className={styles.header} ref={headerRef}>
@@ -88,20 +85,20 @@ const Header = () => {
 
           {/* ======== nav right icons ========= */}
           <div className={`${styles.nav__right} d-flex align-items-center gap-4`}>
-            <span className={styles.cart__icon} onClick={toggleCart}>
-              <i className="ri-shopping-basket-line"></i>
+            <span className={styles.cart__icon}>
+              <i className="ri-shopping-basket-line" onClick={toggleCart}></i>
               <span className={styles.cart__badge}>{totalQuantity}</span>
             </span>
 
             <span className={styles.user}>
-              <Link href="/login">
+              <Link href="/user_login">
                 <i className="ri-user-line"></i>
               </Link>
             </span>
 
             <span>
-              <Link href="/login">
-                {token ? (
+              <Link href="/user_login">
+                {isAuth ? (
                   <div onClick={tokenRemoval} className={styles.logout}>
                     <HiLogout />
                   </div>

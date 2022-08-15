@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <footer  className={styles.footer}>
       <Container>
         <Row>
           <Col lg="3" md="4" sm="6">
@@ -21,41 +21,41 @@ const Footer = () => {
           </Col>
 
           <Col lg="3" md="4" sm="6">
-            <h5 className={styles.footer__title}>Delivery Time</h5>
+            <h5 className={styles.footer__title}>Время доставки:</h5>
             <ListGroup className={styles.deliver__time_list}>
               <ListGroupItem className={`${styles.delivery__time_item} border-0 ps-0`}>
-                <span>Sunday - Thursday</span>
-                <p>10:00am - 11:00pm</p>
+                <span>ПОНЕДЕЛЬНИК - ПЯТНИЦА</span>
+                <p>10:00 - 23:00</p>
               </ListGroupItem>
 
               <ListGroupItem className={`${styles.delivery__time_item} border-0 ps-0`}>
-                <span>Friday - Saturday</span>
-                <p>Off day</p>
+                <span>СУББОТА - ВОСКРЕСЕНЬЕ</span>
+                <p>Выходной</p>
               </ListGroupItem>
             </ListGroup>
           </Col>
 
           <Col lg="3" md="4" sm="6">
-            <h5 className={styles.footer__title}>Contact</h5>
+            <h5 className={styles.footer__title}>Контакты:</h5>
             <ListGroup className={styles.deliver__time_list}>
               <ListGroupItem className={`${styles.delivery__time_item} border-0 ps-0`}>
-                <p>Location: Grozny, Trosheva 7</p>
+                <p>Адрес: Грозный, Трошева 7</p>
               </ListGroupItem>
               <ListGroupItem className={`${styles.delivery__time_item} border-0 ps-0`}>
-                <span>Phone: +7(928)666-99-66</span>
+                <span>Рабочий номер: +7(928)666-99-66</span>
               </ListGroupItem>
 
               <ListGroupItem className={`${styles.delivery__time_item} border-0 ps-0`}>
-                <span>Email: imran.bursagov@gmail.com</span>
+                <span>Почта: imran.bursagov@gmail.com</span>
               </ListGroupItem>
             </ListGroup>
           </Col>
 
           <Col lg="3" md="4" sm="6">
-            <h5 className={styles.footer__title}>Newsletter</h5>
-            <p>Subscribe our newsletter</p>
+            <h5 className={styles.footer__title}>Рассылка:</h5>
+            <p>Подпишитесь на нашу email рассылку, чтобы оставаться в курсе новостей.</p>
             <div className={styles.newsletter}>
-              <input type="email" placeholder="Enter your email" />
+              <input type="email" placeholder="Введите email" />
               <span>
                 <i className="ri-send-plane-line"></i>
               </span>
@@ -71,7 +71,7 @@ const Footer = () => {
           </Col>
           <Col lg="6" md="6">
             <div className={`${styles.social__links} d-flex align_items-center gap-4 justify-content-end`}>
-              <p className="m-0">Follow: </p>
+              <p className="m-0">Социальные сети: </p>
               <span>
                 {' '}
                 <Link href="instagram.com/imranzxc">

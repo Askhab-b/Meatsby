@@ -1,28 +1,25 @@
-import React from 'react';
-
-import CommonSection from '../../components/UI/common-section/CommonSection';
-import Helmet from '../../components/Helmet/Helmet';
+import CommonSection from '@/components/UI/common-section/CommonSection';
+import Helmet from '@/components/Helmet/Helmet';
 import styles from './Cart.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
-import { cartActions } from '../../store/shopping-cart/cartSlice';
+import { cartActions } from '@/store/shopping-cart/cartSlice';
 import Link from 'next/link';
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
 
-  console.log(cartItems);
   return (
     <>
-    <Helmet title="Cart" />
-      <CommonSection title="Your Cart" />
+      <Helmet title="Cart" />
+      <CommonSection title="Ваша корзина" />
       <section>
         <Container>
           <Row>
             <Col lg="12">
               {cartItems.length === 0 ? (
-                <h5 className="text-center">Your cart is empty</h5>
+                <h5 className="text-center">Ваша корзина пуста</h5>
               ) : (
                 <table className={`${styles.table} table-bordered`}>
                   <thead>
@@ -46,13 +43,13 @@ const Cart = () => {
                 <h6>
                   Итог: <span className={styles.cart__subtotal}>{totalAmount} ₽</span>
                 </h6>
-                <p>Taxes and shipping will calculate at checkout</p>
+                <p>Расходы на доставку будут вычисляться во время оплаты</p>
                 <div className={styles.cart__page_btn}>
                   <button className="btn btn-danger me-4">
-                    <Link href="/foods">Continue Shopping</Link>
+                    <Link href="/foods">Продолжить покупку</Link>
                   </button>
                   <button className="btn btn-danger me-4">
-                    <Link href="/checkout">Proceed to checkout</Link>
+                    <Link href="/checkout">Перейти к оплате</Link>
                   </button>
                 </div>
               </div>
@@ -60,7 +57,7 @@ const Cart = () => {
           </Row>
         </Container>
       </section>
-      </>
+    </>
   );
 };
 

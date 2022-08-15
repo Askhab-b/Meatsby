@@ -12,11 +12,6 @@ export const createUser = createAsyncThunk('auth/createUser', async (params) => 
 
 export const doLogin = createAsyncThunk('auth/doLogin', async (params) => {
   const { data } = await axios.post('/login', params)
-  .then(function (response) {
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('user', data.user);
-    console.log(response);
-  })
   .catch(function (error) {
     console.log(error.toJSON());
   });
@@ -24,56 +19,72 @@ export const doLogin = createAsyncThunk('auth/doLogin', async (params) => {
   return data;
 });
 
-export const logOut = createAsyncThunk('auth/logOut', async (req, res) => {
-  localStorage.removeItem('token');
+export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe', async () => {
+  const { data } = await axios.get('/auth/me')
+  .catch(function (error) {
+    console.log(error.toJSON());
+  });
+
+  return data;
 });
 
 var initialState = {
-  signingUp: false,
-  signingIn: false,
-  user: {},
-  error: null,
-  registered: false,
-  token: '',
+  data: '',
+  status: 'loading',
 }
-
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.data = null;
+    },
+  },
   extraReducers: (builder) => {
+    // doLogin
     builder
-      .addCase(logOut.fulfilled, (state, action) => {
-        state.token = null;
-      })
-
-      .addCase(createUser.pending, (state, action) => {
-        state.signingUp = true;
-      })
-      .addCase(createUser.fulfilled, (state, action) => {
-        state.signingUp = true;
-        state.error = null;
-        state.registered = true;
-      })
-      .addCase(createUser.rejected, (state, action) => {
-        state.signingUp = false;
-        state.error = action.payload;
-      })
-      .addCase(doLogin.pending, (state, action) => {
-        state.signingIn = true;
+      .addCase(doLogin.pending, (state) => {
+        state.status = 'loading';
+        state.data = null;
       })
       .addCase(doLogin.fulfilled, (state, action) => {
-        state.signingIn = true;
-        state.error = null;
-        state.token = action.payload.token;
+        state.status = 'loaded';
+        state.data = action.payload;
       })
       .addCase(doLogin.rejected, (state, action) => {
-        state.signingIn = false;
-        state.error = action.payload;
+        state.status = 'error';
+        state.data = null;
+      })
+      // fetchAuthMe
+      .addCase(fetchAuthMe.pending, (state) => {
+        state.status = 'loading';
+        state.data = null;
+      })
+      .addCase(fetchAuthMe.fulfilled, (state, action) => {
+        state.status = 'loaded';
+        state.data = action.payload;
+      })
+      .addCase(fetchAuthMe.rejected, (state, action) => {
+        state.status = 'error';
+        state.data = null;
+      })
+      // createUser
+      .addCase(createUser.pending, (state) => {
+        state.status = 'loading';
+        state.data = null;
+      })
+      .addCase(createUser.fulfilled, (state, action) => {
+        state.status = 'loaded';
+        state.data = action.payload;
+      })
+      .addCase(createUser.rejected, (state, action) => {
+        state.status = 'error';
+        state.data = null;
       });
   },
 });
 
-export const authReducer = authSlice.actions
+export const selectIsAuth = (state) => Boolean(state.auth.data);
+export const { logout } = authSlice.actions;
 export default authSlice.reducer;

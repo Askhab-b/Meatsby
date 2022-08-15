@@ -42,8 +42,6 @@ const AllFoods = () => {
 
   const prods = useSelector((state) => state.product.products);
 
-   //useEffect(() => dispatch(getProduct()), [dispatch]); 
-
   const searchedProduct = prods.filter((item) => {
     if (searchTerm.value === '') {
       return item;
@@ -56,7 +54,6 @@ const AllFoods = () => {
     }
   });
 
-  console.log(searchedProduct);
   const productPerPage = 12;
   const visitedPage = pageNumber * productPerPage;
   const displayPage = searchedProduct.slice(visitedPage, visitedPage + productPerPage);
@@ -67,10 +64,14 @@ const AllFoods = () => {
     setPageNumber(selected);
   };
 
+  useEffect(() => {
+    dispatch(getProduct());
+  }, []);
+
   return (
     <>
-      <Helmet title="All-Foods" />
-      <CommonSection title="All Foods" />
+    <Helmet title="All-Foods" />
+      <CommonSection title="Вся еда" />
 
       <section>
         <Container>
@@ -81,7 +82,7 @@ const AllFoods = () => {
               >
                 <input
                   type="text"
-                  placeholder="I'm looking for...."
+                  placeholder="Введите название..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -92,14 +93,14 @@ const AllFoods = () => {
             </Col>
             <Col lg="6" md="6" sm="6" xs="12" className="mb-5">
               <div className={`${styles.sorting__widget} text-end`}>
-                <select
+              <select
                   className="w-50"
                   id="SortBy"
                   name="sort_by"
                   onChange={(e) => handleSort(e)}
                   value={sort}
                 >
-                  <option>Default</option>
+                  <option>Сортировка</option>
                   <option value="ascending">Alphabetically, A-Z</option>
                   <option value="descending">Alphabetically, Z-A</option>
                   <option value="high-price">High Price</option>
