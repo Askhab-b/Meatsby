@@ -70,8 +70,8 @@ const AllFoods = () => {
 
   return (
     <>
-    <Helmet title="All-Foods" />
-      <CommonSection title="Вся еда" />
+    <Helmet title="Весь ассортимент" />
+      <CommonSection title="Весь ассортимент" />
 
       <section>
         <Container>
@@ -101,10 +101,10 @@ const AllFoods = () => {
                   value={sort}
                 >
                   <option>Сортировка</option>
-                  <option value="ascending">Alphabetically, A-Z</option>
-                  <option value="descending">Alphabetically, Z-A</option>
-                  <option value="high-price">High Price</option>
-                  <option value="low-price">Low Price</option>
+                  <option value="ascending">По алфавиту, А-Я</option>
+                  <option value="descending">По алфавиту, А-Я</option>
+                  <option value="high-price">Высокая цена</option>
+                  <option value="low-price">Низкая цена</option>
                 </select>
               </div>
             </Col>
@@ -119,8 +119,8 @@ const AllFoods = () => {
               <ReactPaginate
                 pageCount={pageCount}
                 onPageChange={changePage}
-                previousLabel={'Prev'}
-                nextLabel={'Next'}
+                previousLabel={'Назад'}
+                nextLabel={'Вперед'}
                 containerClassName={styles.paginationBttns}
               />
             </div>

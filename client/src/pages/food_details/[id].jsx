@@ -67,7 +67,7 @@ const FoodDetails = () => {
 
   return (
     <>
-    <Helmet title="Product-details" />
+    <Helmet title="Описание" />
       <CommonSection title={product.title} />
 
       <section>
@@ -123,17 +123,17 @@ const FoodDetails = () => {
                       <h2 className={`${styles.product__title} mb-3`}>{item.title}</h2>
                       <p className={styles.product__price}>
                         {' '}
-                        Price: <span>${item.price}</span>
+                        Цена: <span>${item.price}</span>
                       </p>
                       <p className={`${styles.category} mb-5`}>
-                        Category: <span>{item.category}</span>
+                        Категория: <span>{item.category}</span>
                       </p>
 
                       <button
                         onClick={() => addItem(item.id, item.title, item.price, item.image01)}
                         className={styles.addTOCart__btn}
                       >
-                        Add to Cart
+                        Добавить
                       </button>
                     </div>
                   </Col>
@@ -144,13 +144,13 @@ const FoodDetails = () => {
                         className={` ${tab === 'desc' ? 'tab__active' : ''}`}
                         onClick={() => setTab('desc')}
                       >
-                        Description
+                        Описание
                       </h6>
                       <h6
                         className={` ${tab === 'rev' ? 'tab__active' : ''}`}
                         onClick={() => setTab('rev')}
                       >
-                        Review
+                        Отзывы
                       </h6>
                     </div>
 
@@ -159,29 +159,31 @@ const FoodDetails = () => {
                         <p>{item.desc}</p>
                       </div>
                     ) : (
-                      <div className="tab__form mb-3">
-                        <div className="review pt-5">
+                      <div className={`mb-3 ${styles.review_block}`}>
+                        <div className={styles.review_block__all}>
+                        <div className="review">
                           <p className={`${styles.user__name} mb-0`}>John Doe</p>
                           <p className={styles.user__email}>jhon1@gmail.com</p>
-                          <p className={styles.feedback__text}>great product</p>
+                          <p className={styles.feedback__text}>Самый вкусный еда атвечаю</p>
                         </div>
 
                         <div className="review">
                           <p className={`${styles.user__name} mb-0`}>John Doe</p>
                           <p className={styles.user__email}>jhon1@gmail.com</p>
-                          <p className={styles.feedback__text}>great product</p>
+                          <p className={styles.feedback__text}>Самый вкусный еда атвечаю</p>
                         </div>
 
                         <div className="review">
                           <p className={`${styles.user__name} mb-0`}>John Doe</p>
                           <p className={styles.user__email}>jhon1@gmail.com</p>
-                          <p className={styles.feedback__text}>great product</p>
+                          <p className={styles.feedback__text}>Самый вкусный еда атвечаю</p>
+                        </div>
                         </div>
                         <form className={styles.form} onSubmit={submitHandler}>
                           <div className={styles.form__group}>
                             <input
                               type="text"
-                              placeholder="Enter your name"
+                              placeholder="Введите ваше имя"
                               onChange={(e) => setEnteredName(e.target.value)}
                               required
                             />
@@ -190,7 +192,7 @@ const FoodDetails = () => {
                           <div className={styles.form__group}>
                             <input
                               type="text"
-                              placeholder="Enter your email"
+                              placeholder="Введите вашу электронную почту"
                               onChange={(e) => setEnteredEmail(e.target.value)}
                               required
                             />
@@ -200,14 +202,14 @@ const FoodDetails = () => {
                             <textarea
                               rows={5}
                               type="text"
-                              placeholder="Write your review"
+                              placeholder="Напишите ваш отзыв"
                               onChange={(e) => setReviewMsg(e.target.value)}
                               required
                             />
                           </div>
 
                           <button type="submit" className={styles.addTOCart__btn}>
-                            Submit
+                            Отправить
                           </button>
                         </form>
                       </div>
@@ -215,7 +217,7 @@ const FoodDetails = () => {
                   </Col>
 
                   <Col lg="12" className="mb-5 mt-4">
-                    <h2 className={styles.related__Product_title}>You might also like</h2>
+                    <h2 className={styles.related__Product_title}>Вам также может понравиться</h2>
                   </Col>
 
                   {relatedProduct.map((item) => (

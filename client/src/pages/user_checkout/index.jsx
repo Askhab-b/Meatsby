@@ -36,18 +36,18 @@ const Checkout = () => {
 
   return (
     <>
-    <Helmet title="Checkout" />
-      <CommonSection title="Checkout" />
+    <Helmet title="Оплата" />
+      <CommonSection title="Оплата" />
       <section>
         <Container>
           <Row>
             <Col lg="8" md="6">
-              <h6 className="mb-4">Shipping Address</h6>
+              <h6 className="mb-4">Адрес доставки</h6>
               <form className={styles.checkout__form} onSubmit={submitHandler}>
                 <div className={styles.form__group}>
                   <input
                     type="text"
-                    placeholder="Enter your name"
+                    placeholder="Введите ваше имя"
                     required
                     onChange={(e) => setEnterName(e.target.value)}
                   />
@@ -56,7 +56,7 @@ const Checkout = () => {
                 <div className={styles.form__group}>
                   <input
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder="Введите вашу почту"
                     required
                     onChange={(e) => setEnterEmail(e.target.value)}
                   />
@@ -64,7 +64,7 @@ const Checkout = () => {
                 <div className={styles.form__group}>
                   <input
                     type="number"
-                    placeholder="Phone number"
+                    placeholder="Ваш номер телефона"
                     required
                     onChange={(e) => setEnterNumber(e.target.value)}
                   />
@@ -72,7 +72,7 @@ const Checkout = () => {
                 <div className={styles.form__group}>
                   <input
                     type="text"
-                    placeholder="Country"
+                    placeholder="Ваша страна"
                     required
                     onChange={(e) => setEnterCountry(e.target.value)}
                   />
@@ -80,7 +80,7 @@ const Checkout = () => {
                 <div className={styles.form__group}>
                   <input
                     type="text"
-                    placeholder="City"
+                    placeholder="Ваш город"
                     required
                     onChange={(e) => setEnterCity(e.target.value)}
                   />
@@ -88,13 +88,13 @@ const Checkout = () => {
                 <div className={styles.form__group}>
                   <input
                     type="number"
-                    placeholder="Postal code"
+                    placeholder="Почтовый индекс"
                     required
                     onChange={(e) => setPostalCode(e.target.value)}
                   />
                 </div>
                 <button type="submit" className={styles.addTOCart__btn}>
-                  Payment
+                  Оплатить
                 </button>
               </form>
             </Col>
@@ -102,14 +102,14 @@ const Checkout = () => {
             <Col lg="4" md="6">
               <div className={styles.checkout__bill}>
                 <h6 className="d-flex align-items-center justify-content-between mb-3">
-                  Subtotal: <span>${cartTotalAmount}</span>
+                Итог: <span>{cartTotalAmount} ₽</span>
                 </h6>
                 <h6 className="d-flex align-items-center justify-content-between mb-3">
-                  Shipping: <span>${shippingCost}</span>
+                  Доставка: <span>{shippingCost} ₽</span>
                 </h6>
                 <div className={styles.checkout__total}>
                   <h5 className="d-flex align-items-center justify-content-between">
-                    Total: <span>${totalAmount}</span>
+                    Всего: <span>{totalAmount} ₽</span>
                   </h5>
                 </div>
               </div>
