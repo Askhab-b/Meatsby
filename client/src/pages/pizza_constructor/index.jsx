@@ -401,15 +401,15 @@ class Register extends Component {
       },
     },
     selectedToppings: [],
-    basePrice: 1000,
-    toppingPrice: 150,
+    basePrice: 20000,
+    toppingPrice: 4000,
     discount: {
       userCode: '',
       applied: false,
       codes: {
-        codepen: 25,
+        hamzat: 25,
         css: 20,
-        george: 30,
+        intocode: 30,
         html: 10,
         javascript: 15,
         pizza: 40,
@@ -504,19 +504,19 @@ class Register extends Component {
 function ToppingSelect({ toppingOptions, toppingPrice, handleToppingOptionClick }) {
   return (
     <div className="topping-select">
-      <h2>Toppings</h2>
+      <h2>Топпинги</h2>
       <ul className="toppings-info">
         <li>
-          <ToppingIcon iconType={'vegetarian'} /> Vegetarian
+          <ToppingIcon iconType={'vegetarian'} /> Вегетерианское
         </li>
         <li>
-          <ToppingIcon iconType={'gluten free'} /> Gluten Free
+          <ToppingIcon iconType={'gluten free'} /> Без глютена
         </li>
         <li>
-          <ToppingIcon iconType={'hot'} /> Hot & Spicy
+          <ToppingIcon iconType={'hot'} /> Острое
         </li>
       </ul>
-      <p className="toppings-info">Toppings charged at {`$${toppingPrice}`} each.</p>
+      <p className="toppings-info">Топпинги идут по {`$${toppingPrice}`} каждый.</p>
       <ul className="topping-options" onClick={handleToppingOptionClick}>
         {toppingOptions.map((topping) => (
           <ToppingOption key={topping[0]} topping={topping[0]} toppingIcons={topping[1].icons} />
@@ -600,18 +600,18 @@ function OrderDetails({
 
   return (
     <div className="order">
-      <h2>Order Details</h2>
+      <h2>Детали заказа</h2>
       <div className="order-toppings">
-        <h3>Toppings:</h3>
+        <h3>Топпинги:</h3>
         <ul className="order-toppings-list">
-          <li>Cheese</li>
+          <li>Сыр</li>
           {selectedToppings.map((topping) => (
             <li key={topping}>{topping}</li>
           ))}
         </ul>
       </div>
       <div className="order-discount">
-        <h3>Discount Code:</h3>
+        <h3>Промокод:</h3>
         <input
           type="text"
           className="discount-input"
@@ -630,7 +630,7 @@ function OrderDetails({
               className="discount-message discount-message--valid"
               role="alert"
             >
-              Valid Code: {discount.codes[discount.userCode]}% Off
+              Правильный код: {discount.codes[discount.userCode]}% Off
             </p>
           ) : (
             <p
@@ -638,7 +638,7 @@ function OrderDetails({
               className="discount-message discount-message--invalid"
               role="alert"
             >
-              Invalid Code
+              Неверный код
             </p>
           )
         ) : null}
@@ -647,13 +647,13 @@ function OrderDetails({
           onClick={handleDiscountClick}
           aria-label="Apply Discount"
         >
-          Apply
+          Подтвердить
         </button>
       </div>
       <div className="order-price">
-        <h3>Total Price:</h3>
+        <h3>Итог:</h3>
         <p className="price">
-          {`$${
+          {`₽${
             discount.applied && validDiscount
               ? (totalPrice - totalPrice * (discount.codes[discount.userCode] / 100)).toFixed(2)
               : totalPrice
@@ -665,7 +665,7 @@ function OrderDetails({
           aria-label="Confirm Order"
           ref={confirmOrderBtnRef}
         >
-          Order
+          Заказать
         </button>
       </div>
     </div>
@@ -676,15 +676,15 @@ function OrderConfirmation({ closeConfirmationBtnRef, handleOrderSubmit }) {
   return (
     <div className="order-confirmation">
       <div className="order-modal">
-        <h2>Order Confirmed</h2>
-        <p>Your pizza will be with you shortly!</p>
+        <h2>Заказ принят</h2>
+        <p>Ваша пицца будет доставлена в кратчайшие сроки!</p>
         <button
           className="btn-pizza close-btn"
           onClick={handleOrderSubmit}
           aria-label="Close Confirmation"
           ref={closeConfirmationBtnRef}
         >
-          Close
+          Закрыть
         </button>
       </div>
     </div>
