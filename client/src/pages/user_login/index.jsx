@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { doLogin } from '../../store/shopping-cart/authSlice';
 import { selectIsAuth } from '../../store/shopping-cart/authSlice';
 import styles from './Login.module.css'
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"
 
 const Login = () => {
   const isAuth = useSelector(selectIsAuth)
@@ -24,17 +26,20 @@ const Login = () => {
     mode: 'onChange'
   })
 
+  const notificration = () => toast('Ошибка при авторизации')
+
   const onSubmit = async (values) => {
     const data = await dispatch(doLogin(values))
 
     if (!data.payload) {
-      return alert('Не удалось авторизоваться!')
+      return notificration()
+      
     }
 
     if ('token' in data.payload) {
       window.localStorage.setItem('token', data.payload.token)
     }
-
+   
   }
 
   useEffect(() => {
@@ -69,9 +74,11 @@ const Login = () => {
                     {...register('password', { required: true, minLength: 6 })}
                   />
                 </div>
+
                 <button type="submit" className={styles.addTOCart__btn} disabled={!isValid}>
-                  Войти в аккаунт
-                </button>
+                  Войти в аккаунт</button>
+                <ToastContainer 
+                   />
               </form>
               <Link href="/user_register">У вас нет аккаунта?</Link>
             </Col>

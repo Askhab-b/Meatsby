@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from '../../api/axios'
 
 export const createUser = createAsyncThunk('auth/createUser', async (params) => {
+  console.log(params)
   const { data } = await axios.post('/register', params) 
   .catch(function (error) {
     console.log(error.toJSON());
