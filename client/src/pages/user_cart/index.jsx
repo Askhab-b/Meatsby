@@ -43,8 +43,8 @@ const Cart = () => {
                 <h6>
                   Subtotal: $<span className={styles.cart__subtotal}>{totalAmount}</span>
                 </h6>
-                <p>Расходы на доставку будут вычисляться во время оплаты.<</p>
-                <div className="cart__page-btn">
+                <p>Расходы на доставку будут вычисляться во время оплаты.</p>
+                <div className="cart__page_btn">
                   <button className="addTOCart__btn me-4">
                     <Link href="/foods">Продолжить покупку</Link>
                   </button>
