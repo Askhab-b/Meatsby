@@ -1,7 +1,6 @@
 /* google fonts */
 
-@import url("https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Istok+Web&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;600;700&display=swap');
 
 /* reset default style */
 
@@ -15,7 +14,7 @@
 
 body {
   background: #fcfcfc;
-  font-family: "Istok Web", sans-serif;
+  font-family: 'Nunito Sans', sans-serif !important;
   height: 100%;
   --red: #ce442c;
   --blue: #0e447a;
@@ -23,19 +22,9 @@ body {
   --green: #428302;
   --white: #fcfcfc;
   --shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  font-family: 'Roboto Slab', serif;
   font-weight: 400;
   min-height: 100vh;
   color: #1a1a1a;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "RocknRoll One", sans-serif !important;
 }
 
 a {
