@@ -1,5 +1,61 @@
 /* google fonts */
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700&display=swap');
+
+/* reset default style */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* base style */
+
+body {
+  background: #fcfcfc;
+  font-family: 'Nunito Sans', sans-serif !important;
+  height: 100%;
+  --red: #ce442c;
+  --blue: #0e447a;
+  --light-blue: #1b558e;
+  --green: #428302;
+  --white: #fcfcfc;
+  --shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  font-weight: 400;
+  min-height: 100vh;
+  color: #1a1a1a;
+}
+
+a {
+  text-decoration: none !important;
+  color: unset;
+}
+
+h1,
+h2 {
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: #212245;
+}
+
+section {
+  padding: 60px 0px;
+}
+
+@media only screen and (max-width: 768px) {
+  section {
+    padding: 40px 0px;
+  }
+
+  h1,
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* google fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;600;700&display=swap');
 
 /* reset default style */
@@ -1647,4 +1703,251 @@ section {
   100% {
     transform: translate(-50%, -50%) scale(1);
   }
+}
+
+/* ДАЛЬЩЕ ПРЕКОЛ, ЕГО НАДО УДАЛИТЬ */
+#enroll_now {
+  background-color: #0064b6;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 30px;
+}
+#enroll_now:hover {
+  color: #28ddb4;
+}
+#photo_section {
+  padding: 50px 110px 70px 110px;
+}
+#course_section {
+  padding: 50px 110px 70px 110px;
+}
+#about_section {
+  padding: 50px 110px 70px 110px;
+}
+#contact_section {
+  padding: 50px 110px 70px 110px;
+}
+#contact_section {
+  padding: 10px 110px 70px 100px;
+}
+#feedback {
+  padding: 0px 50px 70px 50px;
+}
+
+#photos {
+  border-bottom: 2px solid #01eabb;
+}
+
+#photos:hover {
+  color: #0079d2;
+}
+
+#text_header {
+  color: #fff;
+  margin-top: 100px;
+  position: fixed;
+  margin-left: 12rem;
+}
+#main_header {
+  background: url('https://thumbs.dreamstime.com/z/side-view-cutting-board-covered-food-assorted-including-eggplants-carrots-front-black-background-128742680.jpg');
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+#Food {
+  font-family: 'Roboto', ans-serif;
+  font-style: Bold;
+  color: #ff3333;
+}
+#Trip {
+  color: #28ddb4;
+}
+
+.nav-center {
+  height: 8vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.06);
+}
+
+.nav-header h1 {
+  font-size: 28px;
+}
+
+.links {
+  display: flex;
+}
+
+.links li {
+  font-size: 20px;
+  padding: 10px;
+  margin: 0 5px;
+  text-transform: capitalize;
+}
+
+.links li a {
+  color: black;
+  transition: color 0.4s ease-in-out;
+}
+
+.links li a:hover {
+  color: #27ddb2;
+}
+
+.social-icons {
+  display: flex;
+}
+
+.social-icons li {
+  font-size: 18px;
+  margin: 0 4px;
+}
+
+.fab {
+  color: black;
+}
+
+.fab:hover {
+  color: #084e2a;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .nav-toggle {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 30px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .nav-toggle:hover {
+    transform: rotate(90deg);
+  }
+
+  .links {
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 92vh;
+    top: 8vh;
+    left: -100%;
+    transition: transform 1s ease-in-out;
+    background-color: black;
+    overflow: hidden;
+  }
+
+  .links li a {
+    color: #fff;
+    translate: all 0.6s ease-in-out;
+  }
+
+  .links li a:hover {
+    color: #00efbc;
+    font-weight: 600;
+  }
+
+  .active {
+    transform: translatex(100%);
+  }
+  .social-icons {
+    display: none;
+  }
+  .social-icons li a:hover {
+    color: #0769b2;
+  }
+}
+
+/* card */
+.cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 30px auto;
+  width: 250px;
+  height: 250px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card .card_image {
+  width: inherit;
+  height: inherit;
+  border-radius: 20px;
+}
+
+.card .card_image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -80px;
+  height: 40px;
+}
+
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25), -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+}
+
+.title-white {
+  color: white;
+}
+
+.title-black {
+  color: black;
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
+
+/* Google maps */
+.responsive-map {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.responsive-map iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }

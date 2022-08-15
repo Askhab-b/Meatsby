@@ -12,7 +12,7 @@ const Cart = () => {
 
   return (
     <>
-      <Helmet title="Cart" />
+      <Helmet title="Корзина" />
       <CommonSection title="Ваша корзина" />
       <section>
         <Container>
@@ -21,14 +21,14 @@ const Cart = () => {
               {cartItems.length === 0 ? (
                 <h5 className="text-center">Ваша корзина пуста</h5>
               ) : (
-                <table className={`${styles.table} table-bordered`}>
+                <table className="table table-bordered">
                   <thead>
                     <tr>
-                      <th>Image</th>
-                      <th>Product Title</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Delete</th>
+                      <th>Изображение</th>
+                      <th>Название</th>
+                      <th>Цена</th>
+                      <th>Количество</th>
+                      <th>Убрать</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -49,7 +49,7 @@ const Cart = () => {
                     <Link href="/foods">Продолжить покупку</Link>
                   </button>
                   <button className="btn btn-danger me-4">
-                    <Link href="/checkout">Перейти к оплате</Link>
+                    <Link href="/user_checkout">Перейти к оплате</Link>
                   </button>
                 </div>
               </div>
@@ -75,7 +75,7 @@ const Tr = (props) => {
       </td>
       <td className="text-center">{title}</td>
       <td className="text-center">${price}</td>
-      <td className="text-center">{quantity}px</td>
+      <td className="text-center">{quantity} шт</td>
       <td className={`text-center ${styles.cart__item_del}`}>
         <i class="ri-delete-bin-line" onClick={deleteItem}></i>
       </td>
