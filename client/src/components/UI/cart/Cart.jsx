@@ -17,7 +17,7 @@ const Carts = () => {
   
   return (
     <div className={styles.cart__container}>
-      <ListGroup className="cart">
+      <ListGroup className={styles.cart}>
         <div className={styles.cart__close}>
           <span onClick={toggleCart}>
             <i class="ri-close-fill"></i>
@@ -34,7 +34,7 @@ const Carts = () => {
 
         <div className={`${styles.cart__bottom} d-flex align-items-center justify-content-between`}>
           <h6>
-            Subtotal : <span>${totalAmount}</span>
+            Всего : <span>{totalAmount} ₽</span>
           </h6>
           <button disabled={!isAuth}>
             <Link href="/checkout" onClick={toggleCart}>
