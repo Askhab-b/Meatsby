@@ -1,9 +1,5 @@
-/*
 import Helmet from '../../components/Helmet/Helmet';
-import { Container } from 'reactstrap';
-import { useRef, useState } from 'react';
 import styles from './Pizza.module.css';
-*/
 
 /*
 const Register = () => {
@@ -464,38 +460,41 @@ class Register extends Component {
   render() {
     return (
       <React.Fragment>
-        <main className='head-pp'>
-          <div className="pp-container">
-            <ToppingSelect
-              toppingOptions={Object.entries(this.state.toppingOptions)}
-              toppingPrice={(this.state.toppingPrice / 100).toFixed(2)}
-              handleToppingOptionClick={this.handleToppingOptionClick}
-            />
-            <Pizza
-              selectedToppings={this.state.selectedToppings}
-              toppingOptions={this.state.toppingOptions}
-            />
-            <OrderDetails
-              selectedToppings={this.state.selectedToppings}
-              totalPrice={(
-                (this.state.basePrice +
-                  this.state.toppingPrice * this.state.selectedToppings.length) /
-                100
-              ).toFixed(2)}
-              discount={this.state.discount}
-              confirmOrderBtnRef={this.confirmOrderBtnRef}
-              handleDiscountInput={this.handleDiscountInput}
-              handleDiscountClick={this.handleDiscountClick}
-              handleOrderSubmit={this.handleOrderSubmit}
-            />
-            {this.state.orderConfirmed ? (
-              <OrderConfirmation
-                handleOrderSubmit={this.handleOrderSubmit}
-                closeConfirmationBtnRef={this.closeConfirmationBtnRef}
+        <Helmet title="Пицца конструктор" />
+        <section className={styles.pizza_bbb}>
+          <main className="head-pp">
+            <div className="pp-container">
+              <ToppingSelect
+                toppingOptions={Object.entries(this.state.toppingOptions)}
+                toppingPrice={(this.state.toppingPrice / 100).toFixed(2)}
+                handleToppingOptionClick={this.handleToppingOptionClick}
               />
-            ) : null}
-          </div>
-        </main>
+              <Pizza
+                selectedToppings={this.state.selectedToppings}
+                toppingOptions={this.state.toppingOptions}
+              />
+              <OrderDetails
+                selectedToppings={this.state.selectedToppings}
+                totalPrice={(
+                  (this.state.basePrice +
+                    this.state.toppingPrice * this.state.selectedToppings.length) /
+                  100
+                ).toFixed(2)}
+                discount={this.state.discount}
+                confirmOrderBtnRef={this.confirmOrderBtnRef}
+                handleDiscountInput={this.handleDiscountInput}
+                handleDiscountClick={this.handleDiscountClick}
+                handleOrderSubmit={this.handleOrderSubmit}
+              />
+              {this.state.orderConfirmed ? (
+                <OrderConfirmation
+                  handleOrderSubmit={this.handleOrderSubmit}
+                  closeConfirmationBtnRef={this.closeConfirmationBtnRef}
+                />
+              ) : null}
+            </div>
+          </main>
+        </section>
       </React.Fragment>
     );
   }
@@ -516,7 +515,7 @@ function ToppingSelect({ toppingOptions, toppingPrice, handleToppingOptionClick 
           <ToppingIcon iconType={'hot'} /> Острое
         </li>
       </ul>
-      <p className="toppings-info">Топпинги идут по {`$${toppingPrice}`} каждый.</p>
+      <p className="toppings-info">Топпинги идут по {`${toppingPrice} ₽`} каждый.</p>
       <ul className="topping-options" onClick={handleToppingOptionClick}>
         {toppingOptions.map((topping) => (
           <ToppingOption key={topping[0]} topping={topping[0]} toppingIcons={topping[1].icons} />
