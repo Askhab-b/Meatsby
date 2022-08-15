@@ -11,18 +11,18 @@ import { getProduct } from '../store/shopping-cart/productSlice.js';
 
 const featureData = [
   {
-    title: 'Quick Delivery',
+    title: 'Быстрая доставка',
     imgUrl: '/assets/images/service-01.png',
     desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, doloremque.',
   },
 
   {
-    title: 'Super Dine In',
+    title: 'Комфортабельный зал',
     imgUrl: '/assets/images/service-02.png',
     desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, doloremque.',
   },
   {
-    title: 'Easy Pick Up',
+    title: 'Можно взять с собой',
     imgUrl: '/assets/images/service-03.png',
     desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, doloremque.',
   },
@@ -76,26 +76,26 @@ const Home = () => {
           <Row>
             <Col lg="6" md="6">
               <div data-aos="zoom-out-right" className={styles.hero__content}>
-                <h5 className="mb-3">Easy way to make an order</h5>
+                <h5 className="mb-3">Вкус – это новый тренд</h5>
                 <h1 className={`mb-4 ${styles.hero__title}`}>
-                  <span>HUNGRY?</span> Just wait <br /> food at
-                  <span> your door</span>
+                  <span>Проголодался?</span> Просто <br /> оформи
+                  <span> заказ!</span>
                 </h1>
 
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui magni delectus
-                  tenetur autem, sint veritatis!
+                  В еде, как и в выборе партнера, важнее всего богатый внутренний мир. Попробовав
+                  однажды, будет очень сложно соглашаться на меньшее!
                 </p>
 
                 <div className={`${styles.hero__btns} d-flex align-items-center gap-5 mt-4`}>
                   <button
                     className={`${styles.order__btn} d-flex align-items-center justify-content-between`}
                   >
-                    Order now <i className="ri-arrow-right-s-line"></i>
+                    Оформить заказ <i className="ri-arrow-right-s-line"></i>
                   </button>
 
                   <button className={styles.all__foods_btn}>
-                    <Link href="/foods">See all foods</Link>
+                    <Link href="/foods">Перейти в меню</Link>
                   </button>
                 </div>
 
@@ -104,14 +104,14 @@ const Home = () => {
                     <span className={styles.shipping__icon}>
                       <i className="ri-car-line"></i>
                     </span>{' '}
-                    No shipping charge
+                    Бесплатная доставка
                   </p>
 
                   <p className=" d-flex align-items-center gap-2 ">
                     <span className={styles.shipping__icon}>
                       <i className="ri-shield-check-line"></i>
                     </span>{' '}
-                    100% secure checkout
+                    100% безопасная оплата
                   </p>
                 </div>
               </div>
@@ -126,21 +126,18 @@ const Home = () => {
         </Container>
       </section>
 
-      <section data-aos="fade-up"
-     data-aos-anchor-placement="bottom-bottom" className="pt-0">
+      <section data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" className="pt-0">
         <Category />
       </section>
 
       <section>
         <Container>
-          <Row  data-aos="flip-left"
-               data-aos-easing="ease-out-cubic"
-               data-aos-duration="1500">
+          <Row data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1500">
             <Col lg="12" className="text-center">
-              <h5 className={`${styles.feature__subtitle} mb-4`}>What we serve</h5>
-              <h2 className={styles.feature__title}>Just sit back at home</h2>
+              <h5 className={`${styles.feature__subtitle} mb-4`}>Что мы предлагаем</h5>
+              <h2 className={styles.feature__title}>Просто оформите заказ</h2>
               <h2 className={styles.feature__title}>
-                we will <span>take care</span>
+                и мы о вас <span>позаботимся</span>
               </h2>
               <p className={`mb-1 mt-4 ${styles.feature__text}`}>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, officiis?
@@ -168,9 +165,9 @@ const Home = () => {
 
       <section>
         <Container>
-          <Row  data-aos="flip-up">
+          <Row data-aos="flip-up">
             <Col lg="12" className="text-center">
-              <h2>Popular Foods</h2>
+              <h2>Популярная еда</h2>
             </Col>
 
             <Col lg="12">
@@ -183,7 +180,7 @@ const Home = () => {
                   } `}
                   onClick={() => setCategory('ALL')}
                 >
-                  All
+                  Все
                 </button>
                 <button
                   className={`d-flex align-items-center gap-2 ${
@@ -192,7 +189,7 @@ const Home = () => {
                   onClick={() => setCategory('BURGER')}
                 >
                   <img src="/assets/images/hamburger.png" alt="" />
-                  Burger
+                  Бургеры
                 </button>
 
                 <button
@@ -202,7 +199,7 @@ const Home = () => {
                   onClick={() => setCategory('PIZZA')}
                 >
                   <img src="/assets/images/pizza.png" alt="" />
-                  Pizza
+                  Пицца
                 </button>
 
                 <button
@@ -212,7 +209,7 @@ const Home = () => {
                   onClick={() => setCategory('BREAD')}
                 >
                   <img src="/assets/images/bread.png" alt="" />
-                  Bread
+                  Хлеб
                 </button>
               </div>
             </Col>
@@ -229,18 +226,25 @@ const Home = () => {
       <section className={styles.why__choose_us}>
         <Container>
           <Row>
-            <Col data-aos="flip-left"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="1500" lg="6" md="6">
+            <Col
+              data-aos="flip-left"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="1500"
+              lg="6"
+              md="6"
+            >
               <img src="/assets/images/location.png" alt="why-tasty-treat" className="w-100" />
             </Col>
 
             <Col lg="6" md="6">
-              <div  data-aos="flip-left"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="1500"className={styles.why__tasty_treat}>
+              <div
+                data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="1500"
+                className={styles.why__tasty_treat}
+              >
                 <h2 className={`${styles.tasty__treat_title} mb-4`}>
-                  Why <span>Tasty Treat?</span>
+                  Почему именно <span>Meatsby?</span>
                 </h2>
                 <p className={styles.tasty__treat_desc}>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, minus. Tempora
@@ -248,11 +252,14 @@ const Home = () => {
                   esse iste fugiat dolor, optio incidunt eligendi deleniti!
                 </p>
 
-                <ListGroup data-aos="fade-up"
-     data-aos-anchor-placement="bottom-bottom" className="mt-4">
+                <ListGroup
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="bottom-bottom"
+                  className="mt-4"
+                >
                   <ListGroupItem className="border-0 ps-0">
                     <p className={`${styles.choose__us_title} d-flex align-items-center gap-2`}>
-                      <i className="ri-checkbox-circle-line"></i> Fresh and tasty foods
+                      <i className="ri-checkbox-circle-line"></i> Свежая и вкусная еда
                     </p>
                     <p className={styles.choose__us_desc}>
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, voluptatibus.
@@ -261,7 +268,7 @@ const Home = () => {
 
                   <ListGroupItem className="border-0 ps-0">
                     <p className={`${styles.choose__us_title} d-flex align-items-center gap-2`}>
-                      <i className="ri-checkbox-circle-line"></i> Quality support
+                      <i className="ri-checkbox-circle-line"></i> Авторская кухня
                     </p>
                     <p className={styles.choose__us_desc}>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, earum.
@@ -270,7 +277,7 @@ const Home = () => {
 
                   <ListGroupItem className="border-0 ps-0">
                     <p className={`${styles.choose__us_title} d-flex align-items-center gap-2`}>
-                      <i className="ri-checkbox-circle-line"></i>Order from any location{' '}
+                      <i className="ri-checkbox-circle-line"></i>Доставка по всему городу{' '}
                     </p>
                     <p className={styles.choose__us_desc}>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, earum.
@@ -285,10 +292,9 @@ const Home = () => {
 
       <section className="pt-0">
         <Container>
-          <Row data-aos="fade-up"
-     data-aos-anchor-placement="bottom-bottom">
+          <Row data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
             <Col lg="12" className="text-center mb-5 ">
-              <h2>Hot Pizza</h2>
+              <h2>Горячая пицца</h2>
             </Col>
 
             {hotPizza.map((item) => (
@@ -305,9 +311,9 @@ const Home = () => {
           <Row>
             <Col data-aos="fade-right" lg="6" md="6">
               <div className={styles.testimonial}>
-                <h5 className={`${styles.testimonial__subtitle} mb-4`}>Testimonial</h5>
+                <h5 className={`${styles.testimonial__subtitle} mb-4`}>Отзывы</h5>
                 <h2 className="testimonial__title mb-4">
-                  What our <span>customers</span> are saying
+                  Что говорят <span>наши</span> клиенты:
                 </h2>
                 <p className={styles.testimonial__desc}>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio quasi qui

@@ -13,13 +13,13 @@ const Cart = () => {
   return (
     <>
     <Helmet title="Cart" />
-      <CommonSection title="Your Cart" />
+      <CommonSection title="Ваша корзина" />
       <section>
         <Container>
           <Row>
             <Col lg="12">
               {cartItems.length === 0 ? (
-                <h5 className="text-center">Your cart is empty</h5>
+                <h5 className="text-center">Ваша корзина пуста</h5>
               ) : (
                 <table className={`${styles.table} table-bordered`}>
                   <thead>
@@ -43,13 +43,13 @@ const Cart = () => {
                 <h6>
                   Subtotal: $<span className={styles.cart__subtotal}>{totalAmount}</span>
                 </h6>
-                <p>Taxes and shipping will calculate at checkout</p>
-                <div className={styles.cart__page_btn}>
+                <p>Расходы на доставку будут вычисляться во время оплаты.<</p>
+                <div className="cart__page-btn">
                   <button className="addTOCart__btn me-4">
-                    <Link href="/foods">Continue Shopping</Link>
+                    <Link href="/foods">Продолжить покупку</Link>
                   </button>
                   <button className="addTOCart__btn">
-                    <Link href="/checkout">Proceed to checkout</Link>
+                    <Link href="/checkout">Перейти к оплате</Link>
                   </button>
                 </div>
               </div>

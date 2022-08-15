@@ -10,23 +10,23 @@ import { logout } from '../../store/shopping-cart/authSlice';
 
 const nav__links = [
   {
-    display: 'Home',
+    display: 'Главная',
     path: '/',
   },
   {
-    display: 'Foods',
+    display: 'Еда',
     path: '/foods',
   },
   {
-    display: 'Cart',
+    display: 'Корзина',
     path: '/user_cart',
   },
   {
-    display: 'Contact',
+    display: 'Контакты',
     path: '/delievery_contact',
   },
   {
-    display: 'Constructor',
+    display: 'Конструктор',
     path: '/pizza_constructor',
   },
 ];
