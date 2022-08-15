@@ -10,8 +10,9 @@
   cursor: pointer;
 }
 
-.cart__page_btn button a:hover {
-  color: #fff;
+.cart__page_btn button a {
+  color: var(--white) !important;
+  text-decoration: none !important;
 }
 
 .cart__subtotal {
