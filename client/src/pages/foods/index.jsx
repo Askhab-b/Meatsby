@@ -15,11 +15,34 @@ const AllFoods = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(0);
 
+  const [sort, setSort] = useState('');
+
+  const handleSort = (e) => {
+    setSort(e.target.value);
+  };
+
+  const collatore = new Intl.Collator('en-EN');
+
+  const sortProducts = () => {
+    switch (sort) {
+      case 'ascending':
+        return displayPage.slice().sort((a, b) => collatore.compare(a.title, b.title));
+      case 'descending':
+        return displayPage.slice().sort((a, b) => collatore.compare(b.title, a.title));
+      case 'high-price':
+        return displayPage.slice().sort((a, b) => b.price - a.price);
+      case 'low-price':
+        return displayPage.slice().sort((a, b) => a.price - b.price);
+      default:
+        return displayPage;
+    }
+  };
+
   const dispatch = useDispatch();
 
   const prods = useSelector((state) => state.product.products);
 
-  // useEffect(() => dispatch(getProduct()), [dispatch]); // ошибка
+   //useEffect(() => dispatch(getProduct()), [dispatch]); 
 
   const searchedProduct = prods.filter((item) => {
     if (searchTerm.value === '') {
@@ -46,14 +69,16 @@ const AllFoods = () => {
 
   return (
     <>
-    <Helmet title="All-Foods" />
+      <Helmet title="All-Foods" />
       <CommonSection title="All Foods" />
 
       <section>
         <Container>
           <Row>
             <Col lg="6" md="6" sm="6" xs="12">
-              <div className={`${styles.search__widget} d-flex align-items-center justify-content-between`}>
+              <div
+                className={`${styles.search__widget} d-flex align-items-center justify-content-between`}
+              >
                 <input
                   type="text"
                   placeholder="I'm looking for...."
@@ -67,7 +92,13 @@ const AllFoods = () => {
             </Col>
             <Col lg="6" md="6" sm="6" xs="12" className="mb-5">
               <div className={`${styles.sorting__widget} text-end`}>
-                <select className="w-50">
+                <select
+                  className="w-50"
+                  id="SortBy"
+                  name="sort_by"
+                  onChange={(e) => handleSort(e)}
+                  value={sort}
+                >
                   <option>Default</option>
                   <option value="ascending">Alphabetically, A-Z</option>
                   <option value="descending">Alphabetically, Z-A</option>
@@ -77,7 +108,7 @@ const AllFoods = () => {
               </div>
             </Col>
 
-            {displayPage.map((item) => (
+            {sortProducts().map((item) => (
               <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
                 <ProductCard item={item} />
               </Col>
@@ -89,13 +120,13 @@ const AllFoods = () => {
                 onPageChange={changePage}
                 previousLabel={'Prev'}
                 nextLabel={'Next'}
-                containerClassName=" paginationBttns "
+                containerClassName={styles.paginationBttns}
               />
             </div>
           </Row>
         </Container>
       </section>
-      </>
+    </>
   );
 };
 
