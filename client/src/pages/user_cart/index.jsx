@@ -49,7 +49,7 @@ const Cart = () => {
                     <Link href="/foods">Продолжить покупку</Link>
                   </button>
                   <button className="addTOCart__btn">
-                    <Link href="/checkout">Перейти к оплате</Link>
+                    <Link href="/user_checkout">Перейти к оплате</Link>
                   </button>
                 </div>
               </div>
