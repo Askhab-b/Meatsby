@@ -45,8 +45,8 @@ const Login = () => {
   
   return (
     <>
-    <Helmet title="Login" />
-      <CommonSection title="Login" />
+    <Helmet title="Вход в личный кабинет" />
+      <CommonSection title="Войти в личный кабинет" />
       <section>
         <Container>
           <Row>
@@ -56,7 +56,7 @@ const Login = () => {
                   <input
                     type="email"
                     name="email"
-                    placeholder="Email"
+                    placeholder="Электронный адрес"
                     required
                     {...register('email', { required: true,  pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ })}
                   />
@@ -64,16 +64,16 @@ const Login = () => {
                 <div className={styles.form__group}>
                   <input
                     type="password"
-                    placeholder="Password"
+                    placeholder="Пароль"
                     required
-                    {...register('password', { required: true })}
+                    {...register('password', { required: true, minLength: 6 })}
                   />
                 </div>
                 <button type="submit" className={styles.addTOCart__btn} disabled={!isValid}>
-                  Login
+                  Войти в аккаунт
                 </button>
               </form>
-              <Link href="/user_register">Don't have an account? Create an account</Link>
+              <Link href="/user_register">У вас нет аккаунта?</Link>
             </Col>
           </Row>
         </Container>

@@ -50,11 +50,20 @@
 }
 
 .form {
-  width: 60%;
+  width: 40%;
   margin: auto;
   background: #fde4e4;
   padding: 20px;
   border-radius: 5px;
+}
+
+.review_block{
+  display: flex;
+  padding-top: 2%;
+}
+
+.review_block__all{
+  width: 50%;
 }
 
 .form__group {

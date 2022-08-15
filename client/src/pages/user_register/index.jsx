@@ -49,8 +49,8 @@ const Register = () => {
 
   return (
     <>
-    <Helmet title="Signup" />
-      <CommonSection title="Signup" />
+    <Helmet title="Регистрация аккаунта" />
+      <CommonSection title="Регистрация нового аккаунта" />
       <section>
         <Container>
           <Row>
@@ -59,21 +59,21 @@ const Register = () => {
                 <div className={styles.form__group}>
                   <input
                     type="text"
-                    placeholder="First name"
+                    placeholder="Имя"
                     {...register('firstname', { required: true })}
                   />
                 </div>
                 <div className={styles.form__group}>
                   <input
                     type="text"
-                    placeholder="Last name"
+                    placeholder="Фамилие"
                     {...register('lastname', { required: true })}
                   />
                 </div>
                 <div className={styles.form__group}>
                   <input
                     type="email"
-                    placeholder="Email"
+                    placeholder="Электронный адрес"
                     {...register('email', { required: true,  pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ })}
                   />
                 {errors.email && "Введите корректную электронную почту"}
@@ -81,7 +81,7 @@ const Register = () => {
                 <div className={styles.form__group}>
                   <input
                     type="password"
-                    placeholder="Password"
+                    placeholder="Пароль"
                     {...register('password', { required: true, minLength: 6})}
                   />
                   {errors.password && "Минимальная длина пароля 6 символов"}
@@ -91,10 +91,10 @@ const Register = () => {
                   className={styles.addTOCart__btn}
                   disabled={!isValid}
                 >
-                  Sign Up
+                  Войти
                 </button>
               </form>
-              <Link href="/user_login">Already have an account? Login</Link>
+              <Link href="/user_login">Уже есть аккаунт?</Link>
             </Col>
           </Row>
         </Container>
