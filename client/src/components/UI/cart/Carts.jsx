@@ -29,7 +29,7 @@ const Carts = () => {
 
         <div className={styles.cart__item_list}>
           {cartProducts.length === 0 ? (
-            <h6 className="text-center mt-5">No item added to the cart</h6>
+            <h6 className="text-center mt-5">Ваша корзина пуста</h6>
           ) : (
             cartProducts.map((item, index) => <CartItem item={item} key={index} />)
           )}
@@ -41,7 +41,7 @@ const Carts = () => {
           </h6>
           <button disabled={!token}>
             <Link href="/checkout" onClick={toggleCart}>
-              Checkout
+                Оплата
             </Link>
           </button>
         </div>

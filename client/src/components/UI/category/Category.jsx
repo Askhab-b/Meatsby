@@ -4,21 +4,21 @@ import styles from './Category.module.css';
 
 const categoryData = [
   {
-    display: 'Fastfood',
+    display: 'Фастфуд',
     imgUrl: '/assets/images/category-01.png',
   },
   {
-    display: 'Pizza',
+    display: 'Пицца',
     imgUrl: '/assets/images/category-02.png',
   },
 
   {
-    display: 'Asian Food',
+    display: 'Азиатская еда',
     imgUrl: '/assets/images/category-03.png',
   },
 
   {
-    display: 'Row Meat',
+    display: 'Мясо',
     imgUrl: '/assets/images/category-04.png',
   },
 ];

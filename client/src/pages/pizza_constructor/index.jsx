@@ -7,61 +7,61 @@ import styles from './Pizza.module.css';
 const Register = () => {
   const [state, setState] = useState({
     toppingOptions: {
-      pepperoni: {
+      Пеперони: {
         icons: [`${styles.gluten} free`],
         amount: 12,
       },
-      bacon: {
+      Бекон: {
         icons: [`${styles.gluten} free`],
         amount: 13,
       },
-      ham: {
+      Сыр: {
         icons: [`${styles.gluten} free`],
         amount: 14,
       },
-      sausage: {
+      Колбаски: {
         icons: [`${styles.gluten} free`],
         amount: 13,
       },
-      chicken: {
+      Курица: {
         icons: [`${styles.gluten} free`],
         amount: 14,
       },
-      onions: {
+      Лук: {
         icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 15,
       },
-      peppers: {
+      Перец: {
         icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 15,
       },
-      mushrooms: {
+      Грибы: {
         icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 22,
       },
-      pineapple: {
+      Ананас: {
         icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 16,
       },
-      olives: {
+      Оливки: {
         icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 19,
       },
-      jalapenos: {
+      Халапеньо: {
         icons: [`${styles.vegetarian}`, `${styles.gluten} free`, `${styles.hot}`],
         amount: 19,
       },
     },
     selectedToppings: [],
-    basePrice: 1000,
-    toppingPrice: 150,
+    basePrice: 20000,
+    toppingPrice: 4000,
     discount: {
       userCode: '',
       applied: false,
       codes: {
-        codepen: 25,
-        css: 20,
-        george: 30,
+        hamzat: 25,
+        intocode: 20,
+        imran: 30,
         html: 10,
         javascript: 15,
         pizza: 40,
@@ -166,19 +166,19 @@ const Register = () => {
 function ToppingSelect({ toppingOptions, toppingPrice, handleToppingOptionClick }) {
   return (
     <div className={styles.topping_select}>
-      <h2>Toppings</h2>
+      <h2>Топпинги</h2>
       <ul className={styles.toppings_info}>
         <li>
-          <ToppingIcon iconType={styles.vegetarian} /> Vegetarian
+          <ToppingIcon iconType={styles.vegetarian} /> Вегетерианское
         </li>
         <li>
-          <ToppingIcon iconType={`${styles.gluten} ${styles.free}`} /> Gluten Free
+          <ToppingIcon iconType={`${styles.gluten} ${styles.free}`} /> Без глютена
         </li>
         <li>
-          <ToppingIcon iconType={styles.hot} /> Hot & Spicy
+          <ToppingIcon iconType={styles.hot} /> Острое
         </li>
       </ul>
-      <p className={styles.toppings_info}>Toppings charged at {`$${toppingPrice}`} each.</p>
+      <p className={styles.toppings_info}>Топпинги идут по {`₽${toppingPrice}`} каждый.</p>
       <ul className={styles.topping_options} onClick={handleToppingOptionClick}>
         {toppingOptions.map((topping) => (
           <ToppingOption key={topping[0]} topping={topping[0]} toppingIcons={topping[1].icons} />
@@ -262,18 +262,18 @@ function OrderDetails({
 
   return (
     <div className={styles.order}>
-      <h2>Order Details</h2>
+      <h2>Детали заказа</h2>
       <div className={styles.order_toppings}>
-        <h3>Toppings:</h3>
+        <h3>Топпинги:</h3>
         <ul className={styles.order_toppings_list}>
-          <li>Cheese</li>
+          <li>Сыр</li>
           {selectedToppings.map((topping) => (
             <li key={topping}>{topping}</li>
           ))}
         </ul>
       </div>
       <div className={styles.order_discount}>
-        <h3>Discount Code:</h3>
+        <h3>Промокод:</h3>
         <input
           type="text"
           className={styles.discount_input}
@@ -300,7 +300,7 @@ function OrderDetails({
               className={`${styles.discount_message} ${styles.discount_message__invalid}`}
               role="alert"
             >
-              Invalid Code
+              Неверный код
             </p>
           )
         ) : null}
@@ -309,11 +309,11 @@ function OrderDetails({
           onClick={handleDiscountClick}
           aria-label="Apply Discount"
         >
-          Apply
+          Подтвердить
         </button>
       </div>
       <div className={styles.order_price}>
-        <h3>Total Price:</h3>
+        <h3>Итого:</h3>
         <p className={styles.price}>
           {`${
             discount.applied && validDiscount
@@ -327,7 +327,7 @@ function OrderDetails({
           aria-label="Confirm Order"
           ref={confirmOrderBtnRef}
         >
-          Order
+          Заказать
         </button>
       </div>
     </div>
@@ -338,15 +338,15 @@ function OrderConfirmation({ closeConfirmationBtnRef, handleOrderSubmit }) {
   return (
     <div className={styles.order_confirmation}>
       <div className={styles.order_modal}>
-        <h2>Order Confirmed</h2>
-        <p>Your pizza will be with you shortly!</p>
+        <h2>Заказ принят</h2>
+        <p>Ваша пицца будет доставлена в кратчайшие сроки!</p>
         <button
           className="btn close-btn"
           onClick={handleOrderSubmit}
           aria-label="Close Confirmation"
           ref={closeConfirmationBtnRef}
         >
-          Close
+          Закрыть
         </button>
       </div>
     </div>
