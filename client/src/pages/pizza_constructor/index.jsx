@@ -1,4 +1,3 @@
-import React from 'react';
 import Helmet from '../../components/Helmet/Helmet';
 import { Container } from 'reactstrap';
 import { useRef, useState } from 'react';
@@ -10,10 +9,6 @@ const Register = () => {
       pepperoni: {
         icons: [`${styles.gluten} free`],
         amount: 12,
-      },
-      bacon: {
-        icons: [`${styles.gluten} free`],
-        amount: 13,
       },
       ham: {
         icons: [`${styles.gluten} free`],
@@ -124,7 +119,7 @@ const Register = () => {
   return (
     <>
       <Helmet title="Constructor" />
-      <section>
+      <section className={styles.pizza_bbb}>
         <Container>
           <main>
             <div className={styles.containerDiv}>
@@ -242,7 +237,7 @@ function PizzaTopping({ topping, toppingAmount }) {
 
   for (let i = 1; i <= toppingAmount; i++) {
     toppings.push(
-      <div key={`${topping + i}`} className={`topping ${topping} ${topping}-${i} `}></div>
+      <div key={`${topping + i}`} className={`${styles.topping} ${topping} ${topping}-${i} `}></div>
     );
   }
 
