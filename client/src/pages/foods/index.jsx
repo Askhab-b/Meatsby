@@ -15,6 +15,29 @@ const AllFoods = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [pageNumber, setPageNumber] = useState(0);
 
+  const [sort, setSort] = useState('');
+
+  const handleSort = (e) => {
+    setSort(e.target.value);
+  };
+
+  const collatore = new Intl.Collator('en-EN');
+
+  const sortProducts = () => {
+    switch (sort) {
+      case 'ascending':
+        return displayPage.slice().sort((a, b) => collatore.compare(a.title, b.title));
+      case 'descending':
+        return displayPage.slice().sort((a, b) => collatore.compare(b.title, a.title));
+      case 'high-price':
+        return displayPage.slice().sort((a, b) => b.price - a.price);
+      case 'low-price':
+        return displayPage.slice().sort((a, b) => a.price - b.price);
+      default:
+        return displayPage;
+    }
+  };
+
   const dispatch = useDispatch();
 
   const prods = useSelector((state) => state.product.products);
@@ -47,8 +70,8 @@ const AllFoods = () => {
 
   return (
     <>
-      <Helmet title="All-Foods" />
-      <CommonSection title="Все позиции" />
+    <Helmet title="All-Foods" />
+      <CommonSection title="Вся еда" />
 
       <section>
         <Container>
@@ -70,7 +93,13 @@ const AllFoods = () => {
             </Col>
             <Col lg="6" md="6" sm="6" xs="12" className="mb-5">
               <div className={`${styles.sorting__widget} text-end`}>
-                <select className="w-50">
+              <select
+                  className="w-50"
+                  id="SortBy"
+                  name="sort_by"
+                  onChange={(e) => handleSort(e)}
+                  value={sort}
+                >
                   <option>Сортировка</option>
                   <option value="ascending">Alphabetically, A-Z</option>
                   <option value="descending">Alphabetically, Z-A</option>
@@ -80,7 +109,7 @@ const AllFoods = () => {
               </div>
             </Col>
 
-            {displayPage.map((item) => (
+            {sortProducts().map((item) => (
               <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
                 <ProductCard item={item} />
               </Col>

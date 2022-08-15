@@ -12,7 +12,7 @@ const Cart = () => {
 
   return (
     <>
-    <Helmet title="Cart" />
+      <Helmet title="Cart" />
       <CommonSection title="Ваша корзина" />
       <section>
         <Container>
@@ -41,14 +41,14 @@ const Cart = () => {
 
               <div className="mt-4">
                 <h6>
-                  Subtotal: $<span className={styles.cart__subtotal}>{totalAmount}</span>
+                  Итог: <span className={styles.cart__subtotal}>{totalAmount} ₽</span>
                 </h6>
-                <p>Расходы на доставку будут вычисляться во время оплаты.</p>
-                <div className="cart__page_btn">
-                  <button className="addTOCart__btn me-4">
+                <p>Расходы на доставку будут вычисляться во время оплаты</p>
+                <div className={styles.cart__page_btn}>
+                  <button className="btn btn-danger me-4">
                     <Link href="/foods">Продолжить покупку</Link>
                   </button>
-                  <button className="addTOCart__btn">
+                  <button className="btn btn-danger me-4">
                     <Link href="/checkout">Перейти к оплате</Link>
                   </button>
                 </div>
@@ -57,7 +57,7 @@ const Cart = () => {
           </Row>
         </Container>
       </section>
-      </>
+    </>
   );
 };
 
