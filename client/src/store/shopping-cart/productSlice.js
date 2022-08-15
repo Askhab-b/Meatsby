@@ -3,9 +3,6 @@ import axios from '../../api/axios'
 
 export const getProduct = createAsyncThunk('get/product', async () => {
   const { data } = await axios.get(`/product`)
-  .catch(function (error) {
-    console.log(error.toJSON());
-  });
 
   return data;
 });
@@ -19,7 +16,6 @@ const initialState = {
 const productSlice = createSlice({
   name: 'product',
   initialState,
-
   reducers: {},
   extraReducers: (builder) => {
     builder

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
-import CommonSection from '../../components/UI/common-section/CommonSection';
-import Helmet from '../../components/Helmet/Helmet';
+import CommonSection from '@/components/UI/common-section/CommonSection';
+import Helmet from '@/components/Helmet/Helmet';
 import styles from './Checkout.module.css'
-
-// import './checkout.module.css';
 
 const Checkout = () => {
   const [enterName, setEnterName] = useState('');
@@ -45,8 +43,8 @@ const Checkout = () => {
           <Row>
             <Col lg="8" md="6">
               <h6 className="mb-4">Shipping Address</h6>
-              <form className="checkout__form" onSubmit={submitHandler}>
-                <div className="form__group">
+              <form className={styles.checkout__form} onSubmit={submitHandler}>
+                <div className={styles.form__group}>
                   <input
                     type="text"
                     placeholder="Enter your name"
@@ -55,7 +53,7 @@ const Checkout = () => {
                   />
                 </div>
 
-                <div className="form__group">
+                <div className={styles.form__group}>
                   <input
                     type="email"
                     placeholder="Enter your email"
@@ -63,7 +61,7 @@ const Checkout = () => {
                     onChange={(e) => setEnterEmail(e.target.value)}
                   />
                 </div>
-                <div className="form__group">
+                <div className={styles.form__group}>
                   <input
                     type="number"
                     placeholder="Phone number"
@@ -71,7 +69,7 @@ const Checkout = () => {
                     onChange={(e) => setEnterNumber(e.target.value)}
                   />
                 </div>
-                <div className="form__group">
+                <div className={styles.form__group}>
                   <input
                     type="text"
                     placeholder="Country"
@@ -79,7 +77,7 @@ const Checkout = () => {
                     onChange={(e) => setEnterCountry(e.target.value)}
                   />
                 </div>
-                <div className="form__group">
+                <div className={styles.form__group}>
                   <input
                     type="text"
                     placeholder="City"
@@ -87,7 +85,7 @@ const Checkout = () => {
                     onChange={(e) => setEnterCity(e.target.value)}
                   />
                 </div>
-                <div className="form__group">
+                <div className={styles.form__group}>
                   <input
                     type="number"
                     placeholder="Postal code"
@@ -95,7 +93,7 @@ const Checkout = () => {
                     onChange={(e) => setPostalCode(e.target.value)}
                   />
                 </div>
-                <button type="submit" className="addTOCart__btn">
+                <button type="submit" className={styles.addTOCart__btn}>
                   Payment
                 </button>
               </form>
