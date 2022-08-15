@@ -1,4 +1,3 @@
-import React from 'react';
 import Helmet from '../../components/Helmet/Helmet';
 import { Container } from 'reactstrap';
 import { useRef, useState } from 'react';
@@ -7,47 +6,39 @@ import styles from './Pizza.module.css';
 const Register = () => {
   const [state, setState] = useState({
     toppingOptions: {
-      Пеперони: {
+      pepperoni: {
         icons: [`${styles.gluten} free`],
         amount: 12,
       },
-      Бекон: {
+      sausage: {
         icons: [`${styles.gluten} free`],
         amount: 13,
       },
-      Сыр: {
+      chicken: {
         icons: [`${styles.gluten} free`],
         amount: 14,
       },
-      Колбаски: {
-        icons: [`${styles.gluten} free`],
-        amount: 13,
-      },
-      Курица: {
-        icons: [`${styles.gluten} free`],
-        amount: 14,
-      },
-      Лук: {
+      onions: {
         icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 15,
       },
-      Перец: {
+      peppers: {
         icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 15,
       },
-      Грибы: {
+      mushrooms: {
         icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 22,
       },
-      Ананас: {
+      pineapple: {
         icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 16,
       },
-      Оливки: {
+      olives: {
         icons: [`${styles.vegetarian}`, `${styles.gluten} free`],
         amount: 19,
       },
-      Халапеньо: {
+      jalapenos: {
         icons: [`${styles.vegetarian}`, `${styles.gluten} free`, `${styles.hot}`],
         amount: 19,
       },
@@ -124,7 +115,7 @@ const Register = () => {
   return (
     <>
       <Helmet title="Constructor" />
-      <section>
+      <section className={styles.pizza_bbb}>
         <Container>
           <main>
             <div className={styles.containerDiv}>
@@ -242,7 +233,7 @@ function PizzaTopping({ topping, toppingAmount }) {
 
   for (let i = 1; i <= toppingAmount; i++) {
     toppings.push(
-      <div key={`${topping + i}`} className={`topping ${topping} ${topping}-${i} `}></div>
+      <div key={`${topping + i}`} className={`${styles.topping} ${topping} ${topping}-${i} `}></div>
     );
   }
 

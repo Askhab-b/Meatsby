@@ -1,41 +1,48 @@
-import React, { useRef, useState } from 'react';
+
+import { useForm } from 'react-hook-form';
 import Helmet from '../../components/Helmet/Helmet';
 import CommonSection from '../../components/UI/common-section/CommonSection';
 import { Container, Row, Col } from 'reactstrap';
 import Link from 'next/link';
-import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { doLogin } from '../../store/shopping-cart/authSlice';
-import { useSelector } from 'react-redux';
+import { selectIsAuth } from '../../store/shopping-cart/authSlice';
 import styles from './Login.module.css'
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const isAuth = useSelector(selectIsAuth)
+  const dispatch = useDispatch()
+  const router = useRouter()
 
-  const dispatch = useDispatch();
+  const { register, handleSubmit, formState: { errors, isValid } } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'onChange'
+  })
 
+  const onSubmit = async (values) => {
+    const data = await dispatch(doLogin(values))
+
+    if (!data.payload) {
+      return alert('Не удалось авторизоваться!')
+    }
+
+    if ('token' in data.payload) {
+      window.localStorage.setItem('token', data.payload.token)
+    }
+
+  }
+
+  useEffect(() => {
+    if (isAuth) {
+      router.push('/admin_panel')
+    }
+  })
   
-  const submitHandler = (e) => {
-    e.preventDefault();
-  };
-
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleClickAuth = () => {
-    dispatch(doLogin({ email, password }));
-    setEmail('');
-    setPassword('');
-  };
-
-  const signingIn = useSelector((state) => state.auth.signingIn);
-  const error = useSelector((state) => state.auth.error);
-
   return (
     <>
     <Helmet title="Login" />
@@ -43,17 +50,15 @@ const Login = () => {
       <section>
         <Container>
           <Row>
-            <Col lg="6" md="6" sm="12" className="m-auto text-center">
-              <form className={`${styles.form} mb-5`} onSubmit={submitHandler}>
-                {signingIn && <div>You are authorized</div>}
-                {error && <div>{error.message}</div>}
+            <Col lg="6" sm="12" className="m-auto text-center">
+              <form className={`${styles.form} mb-5`} onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.form__group}>
                   <input
                     type="email"
+                    name="email"
                     placeholder="Email"
                     required
-                    value={email}
-                    onChange={handleChangeEmail}
+                    {...register('email', { required: true,  pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ })}
                   />
                 </div>
                 <div className={styles.form__group}>
@@ -61,15 +66,14 @@ const Login = () => {
                     type="password"
                     placeholder="Password"
                     required
-                    value={password}
-                    onChange={handleChangePassword}
+                    {...register('password', { required: true })}
                   />
                 </div>
-                <button type="submit" className={styles.addTOCart__btn} onClick={handleClickAuth}>
+                <button type="submit" className={styles.addTOCart__btn} disabled={!isValid}>
                   Login
                 </button>
               </form>
-              <Link href="/register">Don't have an account? Create an account</Link>
+              <Link href="/user_register">Don't have an account? Create an account</Link>
             </Col>
           </Row>
         </Container>

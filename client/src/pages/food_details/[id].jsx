@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 
-//import products from '../assets/fake-data/products';
-
 import { useRouter } from 'next/router'
 import Helmet from '../../components/Helmet/Helmet';
 import CommonSection from '../../components/UI/common-section/CommonSection';
@@ -10,11 +8,9 @@ import { Container, Row, Col } from 'reactstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../../store/shopping-cart/cartSlice';
 
-// import './product-details.module.css';
-
 import ProductCard from '../../components/UI/product-card/ProductCard';
 import { getProduct } from '../../store/shopping-cart/productSlice';
-import styles from './Product.module.css';
+import styles from './Product.module.css'
 
 const FoodDetails = () => {
   const [tab, setTab] = useState('desc');
@@ -28,7 +24,7 @@ const FoodDetails = () => {
   const loading = useSelector((state) => state.product.loading);
 
   const router = useRouter()
-  console.log(router);
+
   const { id } = router.query;
 
   const dispatch = useDispatch();
@@ -54,7 +50,6 @@ const FoodDetails = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    console.log(enteredName, enteredEmail, reviewMsg);
   };
 
   useEffect(() => {
@@ -114,7 +109,7 @@ const FoodDetails = () => {
                   </Col>
 
                   <Col lg="4" md="4">
-                    <div className={styles.product__main - img}>
+                    <div className={styles.product__main_img}>
                       <img
                         src={`http://localhost:4200/${previewImg || item.image01}`}
                         alt=""
@@ -124,13 +119,13 @@ const FoodDetails = () => {
                   </Col>
 
                   <Col lg="6" md="6">
-                    <div className={styles.single__product - content}>
+                    <div className={styles.single__product_content}>
                       <h2 className={`${styles.product__title} mb-3`}>{item.title}</h2>
                       <p className={styles.product__price}>
                         {' '}
                         Price: <span>${item.price}</span>
                       </p>
-                      <p className="category mb-5">
+                      <p className={`${styles.category} mb-5`}>
                         Category: <span>{item.category}</span>
                       </p>
 
@@ -220,7 +215,7 @@ const FoodDetails = () => {
                   </Col>
 
                   <Col lg="12" className="mb-5 mt-4">
-                    <h2 className={styles.related__Product - title}>You might also like</h2>
+                    <h2 className={styles.related__Product_title}>You might also like</h2>
                   </Col>
 
                   {relatedProduct.map((item) => (

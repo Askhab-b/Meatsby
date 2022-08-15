@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <footer  className={styles.footer}>
       <Container>
         <Row>
           <Col lg="3" md="4" sm="6">

@@ -3,43 +3,49 @@ import CommonSection from '../../components/UI/common-section/CommonSection';
 import { Container, Row, Col } from 'reactstrap';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
 import { createUser } from '../../store/shopping-cart/authSlice';
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import { useForm } from 'react-hook-form';
+import { selectIsAuth } from '../../store/shopping-cart/authSlice';
 import styles from './Register.module.css';
+
 const Register = () => {
-  const dispatch = useDispatch();
+  const isAuth = useSelector(selectIsAuth)
+  console.log(isAuth)
+  const dispatch = useDispatch()
+  const router = useRouter()
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
+  const { register, handleSubmit, formState: { errors, isValid } } = useForm({
+    defaultValues: {
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: ''
+    },
+    mode: 'onChange'
+  })
 
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
+  const onSubmit = async (values) => {
+    const data = await dispatch(createUser(values))
 
-  const handleChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
+    if (!data.payload) {
+      return alert('Не удалось зарегистрироваться!')
+    }
+    console.log(data);
+    if ('token' in data.payload) {
+      window.localStorage.setItem('token', data.payload.token)
+    }
 
-  const handleChangeFirstName = (e) => {
-    setFirstname(e.target.value);
-  };
+  }
 
-  const handleChangeLastName = (e) => {
-    setLastname(e.target.value);
-  };
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-  };
-
-  const handleRegistration = () => {
-    dispatch(createUser({ email, password, firstname, lastname }));
-  };
-
-  const signingUp = useSelector((state) => state.auth.signingUp);
-  const error = useSelector((state) => state.auth.error);
+  useEffect(() => {
+    console.log(isAuth)
+    if (isAuth) {
+      console.log(true);
+      router.push('/')
+    }
+  }, [])
 
   return (
     <>
@@ -48,55 +54,47 @@ const Register = () => {
       <section>
         <Container>
           <Row>
-            <Col lg="6" md="6" sm="12" className="m-auto text-center">
-              <form className={`${styles.form} mb-5`} onSubmit={submitHandler}>
-                {error}
-                {signingUp && <div>You are registered</div>}
+            <Col lg="6" sm="12" className="m-auto text-center">
+              <form className={`${styles.form} mb-5`} onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.form__group}>
                   <input
                     type="text"
                     placeholder="First name"
-                    required
-                    onChange={handleChangeFirstName}
-                    value={firstname}
+                    {...register('firstname', { required: true })}
                   />
                 </div>
                 <div className={styles.form__group}>
                   <input
                     type="text"
                     placeholder="Last name"
-                    required
-                    onChange={handleChangeLastName}
-                    value={lastname}
+                    {...register('lastname', { required: true })}
                   />
                 </div>
                 <div className={styles.form__group}>
                   <input
                     type="email"
                     placeholder="Email"
-                    required
-                    onChange={handleChangeEmail}
-                    value={email}
+                    {...register('email', { required: true,  pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ })}
                   />
+                {errors.email && "Введите корректную электронную почту"}
                 </div>
                 <div className={styles.form__group}>
                   <input
                     type="password"
                     placeholder="Password"
-                    required
-                    onChange={handleChangePassword}
-                    value={password}
+                    {...register('password', { required: true, minLength: 6})}
                   />
+                  {errors.password && "Минимальная длина пароля 6 символов"}
                 </div>
                 <button
                   type="submit"
                   className={styles.addTOCart__btn}
-                  onClick={handleRegistration}
+                  disabled={!isValid}
                 >
                   Sign Up
                 </button>
               </form>
-              <Link href="/login">Already have an account? Login</Link>
+              <Link href="/user_login">Already have an account? Login</Link>
             </Col>
           </Row>
         </Container>

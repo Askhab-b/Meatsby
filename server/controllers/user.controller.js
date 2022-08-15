@@ -8,10 +8,6 @@ module.exports = userController = {
     try {
       const { firstname, lastname, email, password } = req.body;
 
-      if (!(email && password && firstname && lastname)) {
-        return res.status(400).send('All input is required');
-      }
-
       const salt = await bcrypt.genSalt(Number(process.env.BCRYPT_ROUNDS));
       const hash = await bcrypt.hash(password, salt);
 
@@ -19,10 +15,10 @@ module.exports = userController = {
         first_name: firstname,
         last_name: lastname,
         email: email.toLowerCase(),
-        password: encryptedPassword,
+        passwordHash: hash,
       });
 
-      const user = doc.save()
+      const user = await doc.save()
 
       const token = jwt.sign(
         {
@@ -51,10 +47,6 @@ module.exports = userController = {
     try {
       const { email, password } = req.body;
 
-      if (!(email && password)) {
-        res.status(400).send('All input is required');
-      }
-
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -75,7 +67,7 @@ module.exports = userController = {
         {
           _id: user._id,
         },
-        process.env.JWT_SECRET,
+        process.env.TOKEN_KEY,
         {
           expiresIn: process.env.SECRET_JWT_EXPIRATION,
         },

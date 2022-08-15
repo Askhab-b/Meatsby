@@ -19,8 +19,6 @@ const AllFoods = () => {
 
   const prods = useSelector((state) => state.product.products);
 
-  // useEffect(() => dispatch(getProduct()), [dispatch]); // ошибка
-
   const searchedProduct = prods.filter((item) => {
     if (searchTerm.value === '') {
       return item;
@@ -33,7 +31,6 @@ const AllFoods = () => {
     }
   });
 
-  console.log(searchedProduct);
   const productPerPage = 12;
   const visitedPage = pageNumber * productPerPage;
   const displayPage = searchedProduct.slice(visitedPage, visitedPage + productPerPage);
@@ -44,16 +41,22 @@ const AllFoods = () => {
     setPageNumber(selected);
   };
 
+  useEffect(() => {
+    dispatch(getProduct());
+  }, []);
+
   return (
     <>
-    <Helmet title="All-Foods" />
+      <Helmet title="All-Foods" />
       <CommonSection title="Все позиции" />
 
       <section>
         <Container>
           <Row>
             <Col lg="6" md="6" sm="6" xs="12">
-              <div className={`${styles.search__widget} d-flex align-items-center justify-content-between`}>
+              <div
+                className={`${styles.search__widget} d-flex align-items-center justify-content-between`}
+              >
                 <input
                   type="text"
                   placeholder="Введите название..."
@@ -87,15 +90,15 @@ const AllFoods = () => {
               <ReactPaginate
                 pageCount={pageCount}
                 onPageChange={changePage}
-                previousLabel={'Назад'}
-                nextLabel={'Вперед'}
-                containerClassName=" paginationBttns "
+                previousLabel={'Prev'}
+                nextLabel={'Next'}
+                containerClassName={styles.paginationBttns}
               />
             </div>
           </Row>
         </Container>
       </section>
-      </>
+    </>
   );
 };
 

@@ -1,18 +1,15 @@
-import React from 'react';
-
-import CommonSection from '../../components/UI/common-section/CommonSection';
-import Helmet from '../../components/Helmet/Helmet';
+import CommonSection from '@/components/UI/common-section/CommonSection';
+import Helmet from '@/components/Helmet/Helmet';
 import styles from './Cart.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
-import { cartActions } from '../../store/shopping-cart/cartSlice';
+import { cartActions } from '@/store/shopping-cart/cartSlice';
 import Link from 'next/link';
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
 
-  console.log(cartItems);
   return (
     <>
     <Helmet title="Cart" />
@@ -44,9 +41,9 @@ const Cart = () => {
 
               <div className="mt-4">
                 <h6>
-                  Subtotal: $<span className="cart__subtotal">{totalAmount}</span>
+                  Subtotal: $<span className={styles.cart__subtotal}>{totalAmount}</span>
                 </h6>
-                <p>Расходы на доставку будут вычисляться во время оплаты.</p>
+                <p>Расходы на доставку будут вычисляться во время оплаты.<</p>
                 <div className="cart__page-btn">
                   <button className="addTOCart__btn me-4">
                     <Link href="/foods">Продолжить покупку</Link>
@@ -73,13 +70,13 @@ const Tr = (props) => {
   };
   return (
     <tr>
-      <td className="text-center cart__img-box">
+      <td className={`text-center ${styles.cart__img_box}`}>
         <img src={`http://localhost:4200/${image01}`} alt="" />
       </td>
       <td className="text-center">{title}</td>
       <td className="text-center">${price}</td>
       <td className="text-center">{quantity}px</td>
-      <td className="text-center cart__item-del">
+      <td className={`text-center ${styles.cart__item_del}`}>
         <i class="ri-delete-bin-line" onClick={deleteItem}></i>
       </td>
     </tr>
